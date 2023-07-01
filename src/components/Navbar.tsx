@@ -28,8 +28,8 @@ const Navbar = () => {
       </Link>
       <MenuListStyle>
         {menuList.map((item) => (
-          <Link to={`${item.href}`}>
-            <li key={item.label}>{item.label}</li>
+          <Link to={`${item.href}`} key={item.label}>
+            <li>{item.label}</li>
           </Link>
         ))}
       </MenuListStyle>
@@ -39,9 +39,11 @@ const Navbar = () => {
 
 const ContainerStyle = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: -1.875rem 0 0 0;
+  /* margin: -1.875rem 0 0 0; */
+  box-sizing: border-box;
   padding: var(--padding-default);
   img {
     padding: 0 5rem 0 0;

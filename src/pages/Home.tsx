@@ -1,18 +1,22 @@
-import Navbar from "@/components/Navbar";
-import React from "react";
 import styled from "styled-components";
 
 const Home = () => {
   return (
     <ContainerStyle>
-      <Navbar />
-      Home
+      <p>Home</p>
     </ContainerStyle>
   );
 };
 
 const ContainerStyle = styled.div`
-  padding: var(--padding-default);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+  align-content: space-between;
+  p {
+    width: 100%;
+  }
 `;
 
 export default Home;
