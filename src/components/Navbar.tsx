@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Navbar = () => {
   const menuList = [
     {
-      label: "About me 👋",
+      label: "About me👋",
       href: "/aboutme",
     },
     {
@@ -42,7 +42,6 @@ const ContainerStyle = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  /* margin: -1.875rem 0 0 0; */
   box-sizing: border-box;
   padding: var(--padding-default);
   img {
