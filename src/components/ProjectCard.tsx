@@ -8,7 +8,7 @@ type Props = {
 };
 
 const ProjectCard = ({ item }: Props) => {
-  const { title, dateEnd, dateStart, icon, imageUrl, team, tool } = item;
+  const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id } = item;
   return (
     <CardStyle>
       <ImageStyle>
@@ -25,8 +25,8 @@ const ProjectCard = ({ item }: Props) => {
           <span>{team}</span>
         </div>
         <ul>
-          {tool.map((item, i) => (
-            <li>{item}</li>
+          {tool.map((item) => (
+            <li key={item}>{item}</li>
           ))}
         </ul>
       </InfoStyle>
