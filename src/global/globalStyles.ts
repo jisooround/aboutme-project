@@ -18,6 +18,7 @@ body {
 }
 
 :root {
+  // color
   --color-blue : #0085FF;
   --color-pink : #FF89C9;
   --color-black90: #262626;
@@ -31,6 +32,7 @@ body {
   --color-black10: #E9E9E9;
   --color-gray: #F2F2F2;
   --color-white: #FFFFFF;
+  // padding
   --padding-default: 1rem 2rem;
 }
 `;

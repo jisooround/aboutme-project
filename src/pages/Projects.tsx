@@ -35,13 +35,14 @@ const CardListStyle = styled.div`
   margin: 0 auto;
   justify-items: center;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  @media (max-width: 1980px) {
+  @media ${(props) => props.theme.desktop} {
     grid-template-columns: repeat(2, minmax(40%, 1fr));
   }
-  @media (max-width: 1440px) {
-    grid-template-columns: repeat(2, minmax(350px, 1fr));
+  @media ${(props) => props.theme.laptop} {
+    gap: 30px;
+    grid-template-columns: repeat(2, minmax(50%, 1fr));
   }
-  @media (max-width: 1024px) {
+  @media ${(props) => props.theme.tablets} {
     grid-template-columns: repeat(1, minmax(100%, 1fr));
   }
 `;
