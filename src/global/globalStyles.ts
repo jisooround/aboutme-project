@@ -2,10 +2,13 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:ital,wght@0,200;0,300;0,400;0,700;1,400;1,600&display=swap'); */
 ${reset}
+
 
 body {
   width: 100%;
+  font-family: "Pretendard Variable", "Pretendard", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",  "Segoe UI Symbol", sans-serif;
   background-color: var(--color-blue);
   color: var(--color-white);
   a {
@@ -15,6 +18,11 @@ body {
   li {
     list-style-type: none;
   }
+  ::selection {
+    color: var(--color-pink);
+    background-color: var(--color-blue);
+}
+
 }
 
 :root {
