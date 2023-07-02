@@ -35,7 +35,7 @@ const ProjectCard = ({ item }: Props) => {
 };
 
 const CardStyle = styled.div`
-  width: 31.25rem;
+  width: 100%;
   height: auto;
   background-color: var(--color-white);
   border-radius: 1rem;

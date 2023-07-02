@@ -29,12 +29,21 @@ const Projects = () => {
 const CardListStyle = styled.div`
   display: grid;
   padding: 6.25rem 0;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   gap: 4.375rem;
   width: 85%;
   height: 100%;
   margin: 0 auto;
   justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  @media (max-width: 1980px) {
+    grid-template-columns: repeat(2, minmax(40%, 1fr));
+  }
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(2, minmax(350px, 1fr));
+  }
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(1, minmax(100%, 1fr));
+  }
 `;
 
 export default Projects;

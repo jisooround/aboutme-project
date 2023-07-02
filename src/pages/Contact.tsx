@@ -6,7 +6,7 @@ const Contact = () => {
 };
 
 const ContactStyle = styled.div`
-  padding-top: 6.25rem;
+  padding-top: 100px;
   box-sizing: border-box;
   width: 800px;
   height: 600px;
