@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { LuExternalLink } from "react-icons/lu";
+import { clickLink } from "./utills/clickLink";
 
 const ContactCard = () => {
   const blogURL = "https://velog.io/@mudidu";
   const gitURL = "https://github.com/jisooround";
 
-  function clickLink(url: string) {
-    window.open(url);
-  }
   return (
     <CardStyle>
       <NameAreaStyle>
@@ -89,9 +87,6 @@ const InfoAreaStyle = styled.section`
       gap: 0.3125rem;
       &:nth-child(1) {
         font-weight: 500;
-      }
-      &.pointer {
-        cursor: pointer;
       }
     }
     @media ${(props) => props.theme.laptop} {

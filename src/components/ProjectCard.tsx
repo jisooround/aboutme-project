@@ -1,5 +1,5 @@
 import { ProjectsListItemType } from "@/model/project";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ProjectDetail from "./ProjectDetail";
 import ProjectModal from "./ProjectModal";
@@ -11,9 +11,23 @@ type Props = {
 };
 
 const ProjectCard = ({ item }: Props) => {
-  const { title, dateEnd, dateStart, icon, imageUrl, team, tool } = item;
+  const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id } = item;
   const [openModal, setOpenModal] = useState(false);
-  console.log(openModal);
+  // 모달이 띄워져있을 때 배경 스크롤 막기
+  useEffect(() => {
+    if (openModal) {
+      document.body.style.cssText = `
+      position: fixed;
+      top: -${window.scrollY}px;
+     overflow-y: scroll;
+      width: 100%;`;
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = "";
+        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+      };
+    }
+  }, [openModal]);
   return (
     <CardStyle>
       <ImageStyle onClick={() => setOpenModal(true)}>
@@ -38,7 +52,7 @@ const ProjectCard = ({ item }: Props) => {
       {openModal && (
         <ModalPortal>
           <ProjectModal setOpenModal={setOpenModal}>
-            <ProjectDetail />
+            <ProjectDetail id={id} />
           </ProjectModal>
         </ModalPortal>
       )}
@@ -52,7 +66,7 @@ const CardStyle = styled.div`
   background-color: var(--color-white);
   border-radius: 1rem;
   box-sizing: border-box;
-  padding: 1.25rem 1.25rem 1.875rem 1.25rem;
+  padding: 20px 1.25rem 1.875rem 1.25rem;
   cursor: pointer;
   box-shadow: 0.1875rem 0.1875rem 0.9375rem var(--color-black60);
   transition: transform 0.3s ease;

@@ -42,5 +42,16 @@ const ModalStyle = styled.div`
   height: 100%;
   z-index: 50;
   background-color: rgba(0, 0, 0, 0.8);
+  button {
+    display: flex;
+    color: var(--color-white);
+    border-radius: 50%;
+    background-color: var(--color-blue);
+    padding: 0.625rem;
+    position: absolute;
+    top: 1.875rem;
+    right: 1.875rem;
+    font-size: 1.125rem;
+  }
 `;
 export default ProjectModal;

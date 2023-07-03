@@ -21,7 +21,18 @@ body {
     color: var(--color-pink);
     background-color: var(--color-blue);
 }
-
+  button{
+    background: inherit ; 
+    border:none; 
+    box-shadow:none; 
+    border-radius:0; 
+    padding:0; 
+    overflow:visible; 
+    cursor:pointer
+  }
+.pointer {
+  cursor:pointer;
+}
 
 }
 

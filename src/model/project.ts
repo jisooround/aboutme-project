@@ -13,6 +13,7 @@ export type ProjectDetailType = ProjectsListItemType & {
   content: string;
   gitUrl: string;
   blogUrl: string;
+  description: string;
 };
 
 export type ProjectDescType = {

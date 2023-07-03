@@ -10,7 +10,7 @@ const ModalPortal = ({ children }: Props) => {
     return null;
   }
 
-  const node = document.getElementById("portals") as Element;
+  const node = document.getElementById("root") as Element;
   return reactDom.createPortal(children, node);
 };
 

@@ -41,7 +41,7 @@ export async function getProjectDetail(id: string) {
     tool,
     "gitUrl" : githuburl,
     "blogUrl" : blogurl,
-    content,
+    content,description,
     "imageUrl":image.asset._ref
   }`,
     )

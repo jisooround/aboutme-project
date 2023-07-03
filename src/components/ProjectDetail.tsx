@@ -1,61 +1,163 @@
 import { ProjectDetailType } from "@/model/project";
 import { getProjectDetail } from "@/service/projects";
 import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import styled from "styled-components";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import MarkdownPreview from "@uiw/react-markdown-preview";
+import { clickLink } from "./utills/clickLink";
+import { BsGithub } from "react-icons/bs";
+import { SiVelog } from "react-icons/si";
+import { projectDesc } from "./data/projectDesc";
+import { formatDate } from "./utills/formatDate";
 
-type Props = {};
+type Props = {
+  id: string;
+};
 
-const ProjectDetail = () => {
+const ProjectDetail = ({ id }: Props) => {
   const [data, setData] = useState<ProjectDetailType>();
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>();
+
   useEffect(() => {
     const fetchData = async () => {
-      const projectDetail = await getProjectDetail(
-        "e87e1c6d-f2c4-4ed1-ae50-86a4cdbaea30",
-      );
+      const projectDetail = await getProjectDetail(id);
       setData(projectDetail[0]);
-      setText(projectDetail[0].content);
     };
 
     fetchData();
   }, []);
 
-  const source = text;
-  const markdown = `### 🛠 사용 스택
-  #### JavaScript
-  자바스크립트 내장 메서드를 학습하며 앱의 기본 동작을 구현하였습니다.
-  #### Vite
-  간단한 설치와 빌드 시간이 빠른 Vite를 사용하였습니다.
-  #### SASS
-  중첩 CSS 기능을 사용하기 위하여 스타일 전처리 도구로 SASS를 사용하였습니다.
-  
-  ---
-  
-  ### 🚩 구현 내용
-  
-  #### ☑️ 달력
-  날짜를 클릭하면 해당 날짜가 왼쪽에 뜨게 됩니다. 그날 일정이 하나라도 있다면 별 표시가 되고, 없다면 할 일 리스트가 비워진 채로 띄워집니다.
-  #### ☑️ To Do 기능
-  할 일을 입력하고 추가하면 날짜가 함께 저장됩니다. 원래는 날짜가 아닌 다른 데이터를 넣도록 만들어진 key인데(원래는 우선순위 number를 입력하는 항목입니다.) 달력 기능을 사용하기 위해 이 항목을 활용하였습니다.`;
-  // console.log(data);
+  console.log(data);
+
+  useEffect(() => {
+    const getDesc = async () => {
+      const getContent = projectDesc.filter(
+        (item) => item.projectId === data?.id,
+      );
+      console.log(getContent);
+      setText(getContent[0].content);
+      return getContent;
+    };
+
+    getDesc();
+  }, [data]);
+
+  const markdown = `${text}`;
+
   return (
     <ContentArea>
-      {/* <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown> */}
+      <ImageAreaStyle>
+        <img src={data?.imageUrl} />
+      </ImageAreaStyle>
+      <InfoAreaStyle>
+        <h3>{data?.icon}</h3>
+        <h2>{data?.title}</h2>
+        <h4>{data?.description}</h4>
+        <div>
+          <p>작업 기간</p>
+          <p>
+            {formatDate(data?.dateStart)} - {formatDate(data?.dateEnd)}
+          </p>
+        </div>
+        <div>
+          <p>팀 구성</p>
+          <p>{data?.team}</p>
+        </div>
+        <span>
+          {data?.gitUrl && (
+            <BsGithub
+              className="pointer"
+              onClick={() => clickLink(`${data?.gitUrl}`)}
+            />
+          )}
+          {data?.blogUrl && (
+            <SiVelog
+              className="pointer"
+              onClick={() => clickLink(`${data?.gitUrl}`)}
+            />
+          )}
+        </span>
+      </InfoAreaStyle>
+      <hr />
       <MarkdownPreview source={markdown} />
     </ContentArea>
   );
 };
 
 const ContentArea = styled.div`
-  width: 70%;
+  width: 50%;
   height: 100%;
-  /* background-color: var(--color-white); */
-  color: var(--color-balck);
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 1.25rem;
+    padding-right: 0.625rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-black10);
+    border-radius: 0.625rem;
+    border: 5px solid var(--color-white);
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 0.625rem;
+    padding-left: 2.5rem;
+  }
+  background-color: var(--color-white);
+  padding: 3.125rem 3.75rem;
+  margin: 100px auto;
+  border-radius: 0.625rem;
+  hr {
+    margin: 2.5rem 0;
+    height: 0.0625rem;
+    background-color: var(--color-blue);
+  }
+`;
+
+const ImageAreaStyle = styled.div`
+  border-radius: 1.25rem;
+  margin-bottom: 1.875rem;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const InfoAreaStyle = styled.div`
+  color: var(--color-black90);
+  h3 {
+    font-size: 3.75rem;
+    padding-bottom: 1.25rem;
+  }
+  h2 {
+    font-size: 2.375rem;
+    font-weight: 600;
+    padding-bottom: 1.25rem;
+  }
+  h4 {
+    padding-bottom: 1.25rem;
+    line-height: 1.3em;
+    font-size: 1.1rem;
+    letter-spacing: -0.2px;
+  }
+  span {
+    color: var(--color-black30);
+    padding-top: 1.875rem;
+    width: 30%;
+    display: flex;
+    gap: 0.625rem;
+    font-size: 1.75rem;
+  }
+  div {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    font-weight: 700;
+    color: var(--color-black80);
+    padding-bottom: 0.625rem;
+    p:nth-child(2n) {
+      font-weight: 400;
+    }
+  }
 `;
 
 export default ProjectDetail;
