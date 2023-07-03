@@ -6,7 +6,6 @@ import MarkdownPreview from "@uiw/react-markdown-preview";
 import { clickLink } from "./utills/clickLink";
 import { BsGithub } from "react-icons/bs";
 import { SiVelog } from "react-icons/si";
-import { projectDesc } from "./data/projectDesc";
 import { formatDate } from "./utills/formatDate";
 
 type Props = {
