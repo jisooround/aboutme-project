@@ -21,25 +21,11 @@ const ProjectDetail = ({ id }: Props) => {
     const fetchData = async () => {
       const projectDetail = await getProjectDetail(id);
       setData(projectDetail[0]);
+      setText(projectDetail[0].content);
     };
 
     fetchData();
   }, []);
-
-  console.log(data);
-
-  useEffect(() => {
-    const getDesc = async () => {
-      const getContent = projectDesc.filter(
-        (item) => item.projectId === data?.id,
-      );
-      console.log(getContent);
-      setText(getContent[0].content);
-      return getContent;
-    };
-
-    getDesc();
-  }, [data]);
 
   const markdown = `${text}`;
 

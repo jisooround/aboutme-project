@@ -40,6 +40,7 @@ const ContainerStyle = styled.div`
   align-items: center;
   box-sizing: border-box;
   padding: var(--padding-default);
+  padding-top: 0;
   img {
     padding: 0 5rem 0 0;
     width: 13rem;

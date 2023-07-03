@@ -36,7 +36,7 @@ export default {
     },
     {
       name: 'content',
-      type: 'string',
+      type: 'text',
       title: 'Content',
       rows: 100,
     },
