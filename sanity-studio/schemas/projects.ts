@@ -33,6 +33,7 @@ export default {
       name: 'content',
       type: 'string',
       title: 'Content',
+      rows: 100,
     },
     {
       name: 'image',

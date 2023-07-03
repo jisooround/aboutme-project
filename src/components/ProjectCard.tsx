@@ -1,17 +1,22 @@
-import { ProjectsListItem } from "@/model/project";
-import React from "react";
+import { ProjectsListItemType } from "@/model/project";
+import { useState } from "react";
 import styled from "styled-components";
+import ProjectDetail from "./ProjectDetail";
+import ProjectModal from "./ProjectModal";
+import ModalPortal from "./ui/ModalPortal";
 import { formatDate } from "./utills/formatDate";
 
 type Props = {
-  item: ProjectsListItem;
+  item: ProjectsListItemType;
 };
 
 const ProjectCard = ({ item }: Props) => {
-  const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id } = item;
+  const { title, dateEnd, dateStart, icon, imageUrl, team, tool } = item;
+  const [openModal, setOpenModal] = useState(false);
+  console.log(openModal);
   return (
     <CardStyle>
-      <ImageStyle>
+      <ImageStyle onClick={() => setOpenModal(true)}>
         <img src={imageUrl} />
       </ImageStyle>
       <h3>
@@ -30,6 +35,13 @@ const ProjectCard = ({ item }: Props) => {
           ))}
         </ul>
       </InfoStyle>
+      {openModal && (
+        <ModalPortal>
+          <ProjectModal setOpenModal={setOpenModal}>
+            <ProjectDetail />
+          </ProjectModal>
+        </ModalPortal>
+      )}
     </CardStyle>
   );
 };

@@ -1,11 +1,11 @@
 import ProjectCard from "@/components/ProjectCard";
-import { ProjectsListItem } from "@/model/project";
+import { ProjectsListItemType } from "@/model/project";
 import { getProjectList } from "@/service/projects";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Projects = () => {
-  const [data, setData] = useState<ProjectsListItem[]>([]);
+  const [data, setData] = useState<ProjectsListItemType[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       const projectList = await getProjectList();

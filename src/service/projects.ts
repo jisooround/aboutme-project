@@ -1,20 +1,5 @@
-// import { SimplePost } from "@/model/post";
-import { ProjectsListItem } from "@/model/project";
+import { ProjectsListItemType } from "@/model/project";
 import { client, urlFor } from "./sanity";
-
-// export async function addUser({ id, username, email, image, name }: OAuthUser) {
-//   return client.createIfNotExists({
-//     _id: id,
-//     _type: "user",
-//     username,
-//     email,
-//     name,
-//     image,
-//     following: [],
-//     followers: [],
-//     bookmarks: [],
-//   });
-// }
 
 export async function getProjectList() {
   const data = await client
@@ -33,7 +18,35 @@ export async function getProjectList() {
   }`,
     )
     .then((projects) =>
-      projects.map((project: ProjectsListItem) => ({
+      projects.map((project: ProjectsListItemType) => ({
+        ...project,
+        imageUrl: urlFor(project.imageUrl),
+      })),
+    );
+  return data;
+}
+
+export async function getProjectDetail(id: string) {
+  const data = await client
+    .fetch(
+      `*[_type == "projects" && _id == "${id}"]
+  {
+    "id":_id,
+    title,
+    icon,
+    "dateStart": datestart,
+    "dateEnd" : dateend,
+    team,
+    order,
+    tool,
+    "gitUrl" : githuburl,
+    "blogUrl" : blogurl,
+    content,
+    "imageUrl":image.asset._ref
+  }`,
+    )
+    .then((projects) =>
+      projects.map((project: ProjectsListItemType) => ({
         ...project,
         imageUrl: urlFor(project.imageUrl),
       })),

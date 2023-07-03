@@ -2,7 +2,6 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 const GlobalStyles = createGlobalStyle`
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:ital,wght@0,200;0,300;0,400;0,700;1,400;1,600&display=swap'); */
 ${reset}
 
 
@@ -22,6 +21,7 @@ body {
     color: var(--color-pink);
     background-color: var(--color-blue);
 }
+
 
 }
 
