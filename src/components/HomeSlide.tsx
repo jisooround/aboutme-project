@@ -51,7 +51,7 @@ const ContainerStyle = styled.div`
     display: flex;
     animation: loop 20s infinite linear;
     img {
-      width: 28.125rem;
+      width: 550px;
       display: inline;
       align-items: center;
       font-size: 23.75rem;
@@ -59,7 +59,7 @@ const ContainerStyle = styled.div`
       padding: 0 6.25rem;
       box-sizing: border-box;
       @media ${(props) => props.theme.laptop} {
-        font-size: 240px;
+        width: 28.125rem;
       }
     }
   }
