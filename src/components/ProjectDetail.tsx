@@ -7,7 +7,7 @@ import { clickLink } from "./utills/clickLink";
 import { BsGithub } from "react-icons/bs";
 import { SiVelog } from "react-icons/si";
 import { formatDate } from "./utills/formatDate";
-import LoadingUi from "./ui/loadingUi";
+import LoadingUi from "./ui/LoadingUi";
 
 type Props = {
   id: string;
