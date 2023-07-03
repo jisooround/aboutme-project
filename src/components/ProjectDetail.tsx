@@ -7,6 +7,7 @@ import { clickLink } from "./utills/clickLink";
 import { BsGithub } from "react-icons/bs";
 import { SiVelog } from "react-icons/si";
 import { formatDate } from "./utills/formatDate";
+import LoadingUi from "./ui/loadingUi";
 
 type Props = {
   id: string;
@@ -15,12 +16,14 @@ type Props = {
 const ProjectDetail = ({ id }: Props) => {
   const [data, setData] = useState<ProjectDetailType>();
   const [text, setText] = useState<string>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const projectDetail = await getProjectDetail(id);
       setData(projectDetail[0]);
       setText(projectDetail[0].content);
+      setLoading(false);
     };
 
     fetchData();
@@ -30,40 +33,46 @@ const ProjectDetail = ({ id }: Props) => {
 
   return (
     <ContentArea>
-      <ImageAreaStyle>
-        <img src={data?.imageUrl} />
-      </ImageAreaStyle>
-      <InfoAreaStyle>
-        <h3>{data?.icon}</h3>
-        <h2>{data?.title}</h2>
-        <h4>{data?.description}</h4>
-        <div>
-          <p>작업 기간</p>
-          <p>
-            {formatDate(data?.dateStart)} - {formatDate(data?.dateEnd)}
-          </p>
-        </div>
-        <div>
-          <p>팀 구성</p>
-          <p>{data?.team}</p>
-        </div>
-        <span>
-          {data?.gitUrl && (
-            <BsGithub
-              className="pointer"
-              onClick={() => clickLink(`${data?.gitUrl}`)}
-            />
-          )}
-          {data?.blogUrl && (
-            <SiVelog
-              className="pointer"
-              onClick={() => clickLink(`${data?.gitUrl}`)}
-            />
-          )}
-        </span>
-      </InfoAreaStyle>
-      <hr />
-      <MarkdownPreview source={markdown} />
+      {loading ? (
+        <LoadingUi />
+      ) : (
+        <>
+          <ImageAreaStyle>
+            <img src={data?.imageUrl} />
+          </ImageAreaStyle>
+          <InfoAreaStyle>
+            <h3>{data?.icon}</h3>
+            <h2>{data?.title}</h2>
+            <h4>{data?.description}</h4>
+            <div>
+              <p>작업 기간</p>
+              <p>
+                {formatDate(data?.dateStart)} - {formatDate(data?.dateEnd)}
+              </p>
+            </div>
+            <div>
+              <p>팀 구성</p>
+              <p>{data?.team}</p>
+            </div>
+            <span>
+              {data?.gitUrl && (
+                <BsGithub
+                  className="pointer"
+                  onClick={() => clickLink(`${data?.gitUrl}`)}
+                />
+              )}
+              {data?.blogUrl && (
+                <SiVelog
+                  className="pointer"
+                  onClick={() => clickLink(`${data?.gitUrl}`)}
+                />
+              )}
+            </span>
+          </InfoAreaStyle>
+          <hr />
+          <MarkdownPreview source={markdown} />
+        </>
+      )}
     </ContentArea>
   );
 };
