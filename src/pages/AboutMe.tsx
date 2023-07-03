@@ -14,7 +14,6 @@ const AboutMe = () => {
     fetchData();
   }, []);
 
-  console.log(data);
   return (
     <ContainerStyle>
       <ItemStyle>
