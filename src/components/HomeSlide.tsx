@@ -6,22 +6,31 @@ const HomeSlide = () => {
   return (
     <ContainerStyle>
       <div>
-        <p>🍧</p>
-        <p>🍡</p>
-        <p>✨</p>
-        <p>🩵</p>
+        <img src="./icon_1.png" />
+
+        <img src="./icon_2.png" />
+
+        <img src="./icon_3.png" />
+
+        <img src="./icon_4.png" />
       </div>
       <div>
-        <p>🍧</p>
-        <p>🍡</p>
-        <p>✨</p>
-        <p>🩵</p>
+        <img src="./icon_1.png" />
+
+        <img src="./icon_2.png" />
+
+        <img src="./icon_3.png" />
+
+        <img src="./icon_4.png" />
       </div>
       <div>
-        <p>🍧</p>
-        <p>🍡</p>
-        <p>✨</p>
-        <p>🩵</p>
+        <img src="./icon_1.png" />
+
+        <img src="./icon_2.png" />
+
+        <img src="./icon_3.png" />
+
+        <img src="./icon_4.png" />
       </div>
     </ContainerStyle>
   );
@@ -41,7 +50,8 @@ const ContainerStyle = styled.div`
   div {
     display: flex;
     animation: loop 20s infinite linear;
-    p {
+    img {
+      width: 28.125rem;
       display: inline;
       align-items: center;
       font-size: 23.75rem;
