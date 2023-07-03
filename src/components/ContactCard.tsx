@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { LuExternalLink } from "react-icons/lu";
 import { clickLink } from "./utills/clickLink";

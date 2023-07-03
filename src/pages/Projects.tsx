@@ -15,8 +15,6 @@ const Projects = () => {
     fetchData();
   }, []);
 
-  console.log(data);
-
   return (
     <CardListStyle>
       {data.map((item) => (

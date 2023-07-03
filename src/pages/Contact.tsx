@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import { LuExternalLink } from "react-icons/lu";
 import ContactCard from "@/components/ContactCard";
 
 const Contact = () => {

@@ -17,6 +17,7 @@ const ContainerStyle = styled.div`
   justify-content: center;
   align-content: space-between;
   position: relative;
+  overflow: hidden;
   p {
     width: 100%;
     font-weight: 100;
