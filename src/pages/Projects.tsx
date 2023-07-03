@@ -34,10 +34,7 @@ const CardListStyle = styled.div`
   height: 100%;
   margin: 0 auto;
   justify-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  @media ${(props) => props.theme.desktop} {
-    grid-template-columns: repeat(2, minmax(40%, 1fr));
-  }
+  grid-template-columns: repeat(3, minmax(30%, 1fr));
   @media ${(props) => props.theme.laptop} {
     gap: 30px;
     grid-template-columns: repeat(2, minmax(50%, 1fr));
