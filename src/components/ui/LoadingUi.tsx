@@ -13,8 +13,6 @@ const LoadingStyle = styled.div`
   width: 100%;
   height: 100%;
   background-color: var(--color-white);
-  /* display: flex;
-  justify-content: center; */
   text-align: center;
   padding-top: 150px;
 `;
