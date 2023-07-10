@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ProjectDetail from "./ProjectDetail";
 import ProjectModal from "./ProjectModal";
 import ModalPortal from "./ui/ModalPortal";
-import { formatDate } from "./utills/formatDate";
+import { formatDate } from "@/utills/formatDate";
 
 type Props = {
   item: ProjectsListItemType;

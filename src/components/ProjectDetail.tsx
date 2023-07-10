@@ -3,10 +3,10 @@ import { getProjectDetail } from "@/service/projects";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import MarkdownPreview from "@uiw/react-markdown-preview";
-import { clickLink } from "./utills/clickLink";
+import { clickLink } from "@/utills/clickLink";
 import { BsGithub } from "react-icons/bs";
 import { SiVelog } from "react-icons/si";
-import { formatDate } from "./utills/formatDate";
+import { formatDate } from "@/utills/formatDate";
 import LoadingUi from "./ui/LoadingUi";
 
 type Props = {
