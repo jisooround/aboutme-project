@@ -17,7 +17,10 @@ const Projects = () => {
 
   return (
     <CardListStyle>
-      <a href="https://kaput-trick-978.notion.site/Portfolio-74a630603cb84dc1aff367ef755a5f83?pvs=4">
+      <a
+        target="_blank"
+        href="https://kaput-trick-978.notion.site/Portfolio-74a630603cb84dc1aff367ef755a5f83?pvs=4"
+      >
         노션으로 보기 👀
       </a>
       {data.map((item) => (
