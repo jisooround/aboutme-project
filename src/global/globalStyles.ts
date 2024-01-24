@@ -8,18 +8,18 @@ ${reset}
 body {
   width: 100%;
   font-family: "Pretendard Variable", "Pretendard", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",  "Segoe UI Symbol", sans-serif;
-  background-color: var(--color-blue);
-  color: var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-black90);
   a {
     text-decoration: none;
-    color: var(--color-white);
+    color: var(--color-black90);
   }
   li {
     list-style-type: none;
   }
   ::selection {
-    color: var(--color-pink);
-    background-color: var(--color-blue);
+    color: var(--color-black90);
+    background-color: var(--color-black10);
 }
   button{
     background: inherit ; 
@@ -52,7 +52,7 @@ body {
   --color-gray: #F2F2F2;
   --color-white: #FFFFFF;
   // padding
-  --padding-default: 1rem 2rem;
+  --padding-default: 1.5rem 4rem;
 }
 `;
 

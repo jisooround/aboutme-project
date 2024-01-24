@@ -17,9 +17,10 @@ const GeneralLayout = ({ children }: Props) => {
 
 const GeneralLayoutStyle = styled.div`
   width: 100%;
-  height: auto;
-  padding-bottom: 9.375rem;
+  /* padding-bottom: 9.375rem; */
 `;
 
-const GeneralBodyStyle = styled.div``;
+const GeneralBodyStyle = styled.div`
+  height: calc(100vh - 87px);
+`;
 export default GeneralLayout;
