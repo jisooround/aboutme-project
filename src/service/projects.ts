@@ -1,6 +1,7 @@
 import { ProjectsListItemType } from "@/model/project";
 import { client, urlFor } from "./sanity";
 
+// Sanity로부터 받을 데이터
 export async function getProjectList() {
   const data = await client
     .fetch(
@@ -8,6 +9,7 @@ export async function getProjectList() {
   {
     "id":_id,
     title,
+    subTitle,
     icon,
     "dateStart": datestart,
     "dateEnd" : dateend,

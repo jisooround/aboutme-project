@@ -1,4 +1,5 @@
 export type ProjectsListItemType = {
+  subTitle: string;
   dateEnd: string;
   dateStart: string;
   icon: string;
