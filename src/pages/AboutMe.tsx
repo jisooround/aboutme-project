@@ -32,7 +32,7 @@ const ContainerStyle = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  margin: 80px auto;
+  margin: 0 auto;
   justify-content: center;
   @media ${(props) => props.theme.laptop} {
     margin: 40px auto;
@@ -49,7 +49,7 @@ const ItemStyle = styled.div`
     width: 40%;
     min-width: 21.875rem;
     aspect-ratio: 1 / 1;
-    border: 5px solid var(--color-pink);
+    border: 5px solid var(--color-black90);
     box-sizing: border-box;
     border-radius: 50%;
   }
