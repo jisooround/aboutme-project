@@ -1,7 +1,9 @@
 import HomeSlide from "@/components/HomeSlide";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <ContainerStyle>
       <TextWrap>
@@ -23,7 +25,13 @@ const Home = () => {
         </div>
       </TextWrap>
       <ButtonWrap>
-        <button>Project 👀</button>
+        <button
+          onClick={() => {
+            navigate("/projects");
+          }}
+        >
+          Project 👀
+        </button>
       </ButtonWrap>
     </ContainerStyle>
   );
