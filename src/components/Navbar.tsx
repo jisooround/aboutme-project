@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 const Navbar = () => {
+  const location = useLocation();
   const menuList = [
     {
       label: "About me",
@@ -32,13 +33,21 @@ const Navbar = () => {
       </LogoStyle>
       <MenuListStyle>
         {menuList.map((item) => (
-          <Link to={`${item.href}`} key={item.label}>
-            <li>{item.label}</li>
+          <Link
+            to={`${item.href}`}
+            target={item.label === "GitHub" ? "_blank" : "_self"}
+            key={item.label}
+          >
+            <li className={item.href === location.pathname ? "bold" : ""}>
+              {item.label}
+            </li>
           </Link>
         ))}
       </MenuListStyle>
       <RightStyle>
-        <p>9utesleben@gmail.com</p>
+        <p>
+          <a href="mailto:9utesleben@gmail.com">9utesleben@gmail.com</a>
+        </p>
       </RightStyle>
     </ContainerStyle>
   );
@@ -77,6 +86,12 @@ const MenuListStyle = styled.ul`
   font-size: 1.2rem;
   margin: 0 auto;
   box-sizing: border-box;
+  .bold {
+    display: inline-block;
+    box-sizing: border-box;
+    margin-bottom: -7px;
+    border-bottom: 1px solid var(--color-black90);
+  }
   li {
     margin-left: 20px;
     margin-right: 20px;
