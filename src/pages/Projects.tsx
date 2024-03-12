@@ -37,6 +37,7 @@ const CardListStyle = styled.div`
   width: 85%;
   height: 100%;
   margin: 0 auto;
+  padding-bottom: 200px;
   justify-items: center;
   grid-template-columns: repeat(3, minmax(30%, 1fr));
   position: relative;
