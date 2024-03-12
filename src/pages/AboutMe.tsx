@@ -34,6 +34,7 @@ const ContainerStyle = styled.div`
   display: flex;
   margin: 0 auto;
   justify-content: center;
+  align-items: flex-start;
   @media ${(props) => props.theme.laptop} {
     margin: 40px auto;
   }
@@ -44,12 +45,13 @@ const ItemStyle = styled.div`
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  padding-top: 150px;
   img {
     justify-content: center;
     width: 40%;
     min-width: 21.875rem;
     aspect-ratio: 1 / 1;
-    border: 5px solid var(--color-black90);
+    border: 2px solid var(--color-black90);
     box-sizing: border-box;
     border-radius: 50%;
   }
