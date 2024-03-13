@@ -11,9 +11,6 @@ type Props = {
 
 const GeneralLayout = ({ children }: Props) => {
   const [contactFlag, setContactFlag] = useState<boolean>(false);
-  useEffect(() => {
-    console.log(contactFlag);
-  }, [contactFlag]);
 
   return (
     <GeneralLayoutStyle contactFlag={contactFlag}>

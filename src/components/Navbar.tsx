@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+interface Props {
+  setContactFlag: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Navbar = () => {
+const Navbar = ({ setContactFlag }: Props) => {
   const location = useLocation();
   const menuList = [
     {
@@ -13,17 +16,13 @@ const Navbar = () => {
       href: "/projects",
     },
     {
-      label: "GitHub",
+      label: `GitHub`,
       href: "https://github.com/jisooround",
     },
     {
       label: "Contact",
       href: "",
     },
-    // {
-    //   label: "Contact",
-    //   href: "/contact",
-    // },
   ];
   return (
     <ContainerStyle>
@@ -37,6 +36,9 @@ const Navbar = () => {
             to={`${item.href}`}
             target={item.label === "GitHub" ? "_blank" : "_self"}
             key={item.label}
+            onClick={() => {
+              item.label === "Contact" ? setContactFlag(true) : "";
+            }}
           >
             <li className={item.href === location.pathname ? "bold" : ""}>
               {item.label}
