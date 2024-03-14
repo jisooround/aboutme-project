@@ -6,14 +6,13 @@ import { RxEyeNone } from "react-icons/rx";
 
 type Props = {
   children: React.ReactNode;
-  contactFlag: boolean;
 };
 
 const GeneralLayout = ({ children }: Props) => {
   const [contactFlag, setContactFlag] = useState<boolean>(false);
 
   return (
-    <GeneralLayoutStyle contactFlag={contactFlag}>
+    <GeneralLayoutStyle>
       {contactFlag && <ContactPopup setContactFlag={setContactFlag} />}
       <Navbar setContactFlag={setContactFlag} />
       <GeneralBodyStyle>{children}</GeneralBodyStyle>
@@ -21,12 +20,11 @@ const GeneralLayout = ({ children }: Props) => {
   );
 };
 
-const GeneralLayoutStyle = styled.div<Props>`
+const GeneralLayoutStyle = styled.div`
   width: 100%;
-  overflow: ${(props) => (props.contactFlag ? "auto" : "")};
 `;
 
-const GeneralBodyStyle = styled.div`
-  height: calc(100vh - 87px);
+const GeneralBodyStyle = styled.div<Props>`
+  padding-top: 87px;
 `;
 export default GeneralLayout;

@@ -35,27 +35,31 @@ const ContainerStyle = styled.div`
   margin: 0 auto;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 0px 0;
   @media ${(props) => props.theme.laptop} {
     margin: 40px auto;
   }
 `;
 
 const ItemStyle = styled.div`
-  width: 70%;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  padding-top: 150px;
+  position: relative;
   img {
     justify-content: center;
-    width: 40%;
-    min-width: 21.875rem;
-    aspect-ratio: 1 / 1;
-    border: 2px solid var(--color-black90);
-    box-sizing: border-box;
-    border-radius: 50%;
+    width: 100%;
+    /* min-width: 21.875rem; */
+    /* aspect-ratio: 1 / 1; */
+    /* border: 2px solid var(--color-black90); */
+    /* box-sizing: border-box; */
+    /* border-radius: 50%; */
   }
   div {
+    position: absolute;
     width: 100%;
     padding: 2.5rem;
     h3 {

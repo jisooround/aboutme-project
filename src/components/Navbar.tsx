@@ -57,6 +57,10 @@ const Navbar = ({ setContactFlag }: Props) => {
 
 const ContainerStyle = styled.div`
   display: grid;
+  position: fixed;
+  z-index: 99999;
+  background-color: var(--color-white);
+
   grid-template-columns: 1fr 3fr 1fr;
   width: 100%;
   justify-content: space-between;

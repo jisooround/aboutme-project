@@ -40,10 +40,12 @@ const Home = () => {
 const ContainerStyle = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
+  align-content: center;
   width: 100%;
   height: 100%;
   padding: var(--padding-default);
   box-sizing: border-box;
+  height: calc(100vh - 87px);
 `;
 
 const TextWrap = styled.div`
@@ -73,6 +75,7 @@ const TextWrap = styled.div`
   }
   strong {
     font-weight: 700;
+    color: var(--color-skyblue);
   }
   @keyframes fadein {
     from {

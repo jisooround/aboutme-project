@@ -87,8 +87,8 @@ const PopupStyle = styled.div`
   width: 100vw;
   height: 100vh;
   /* border: 1px solid black; */
-  position: absolute;
-  z-index: 999;
+  position: fixed;
+  z-index: 999999;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
