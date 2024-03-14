@@ -54,7 +54,7 @@ const ContactPopup = ({ setContactFlag }: Props) => {
       />
       <ContentWrapStyle>
         <i>
-          <img src="/public/mouse-icon.png" alt="" />
+          <img src="/mouse-icon.png" alt="" />
         </i>
         {contactData.map((data) => {
           return (
