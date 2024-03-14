@@ -22,11 +22,6 @@ const contactData = [
   },
   {
     type: "link",
-    title: "instagram",
-    content: "https://www.instagram.com/mudidot",
-  },
-  {
-    type: "link",
     title: "github",
     content: "https://github.com/jisooround",
   },
@@ -34,6 +29,11 @@ const contactData = [
     type: "link",
     title: "blog",
     content: "https://velog.io/@mudidu/posts",
+  },
+  {
+    type: "link",
+    title: "instagram",
+    content: "https://www.instagram.com/mudidot",
   },
 ];
 
@@ -99,7 +99,7 @@ const PopupStyle = styled.div`
 const BackgroundStyle = styled.div`
   width: 100%;
   height: 100%;
-  background-color: skyblue;
+  background-color: var(--color-skyblue);
   opacity: 0.9;
   box-sizing: border-box;
   animation-name: animate-fade;
@@ -165,7 +165,7 @@ const ContentWrapStyle = styled.div`
     span:hover,
     a:hover {
       border: none;
-      color: var(--color-blue);
+      color: var(--color-skyblue);
       box-sizing: border-box;
     }
     @media screen and (max-width: 1530px) {
@@ -198,7 +198,6 @@ const ContentWrapStyle = styled.div`
     width: 90%;
     transition: 0.2s;
   }
-
   @keyframes animate-pop {
     0% {
       opacity: 0;

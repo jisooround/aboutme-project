@@ -39,6 +39,7 @@ body {
 :root {
   // color
   --color-blue : #0085FF;
+  --color-skyblue: #87ceeb;
   --color-pink : #FF89C9;
   --color-black90: #262626;
   --color-black80: #3C3C3C;
