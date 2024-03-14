@@ -81,6 +81,10 @@ const ContentArea = styled.div`
   width: 50%;
   height: 100%;
   overflow-y: auto;
+  animation-name: animate-appear;
+  animation-duration: 0.8s;
+  animation-delay: 0.1s;
+  animation-fill-mode: backwards;
   &::-webkit-scrollbar {
     width: 1.25rem;
     padding-right: 0.625rem;
@@ -103,6 +107,16 @@ const ContentArea = styled.div`
     margin: 2.5rem 0;
     height: 0.0625rem;
     background-color: var(--color-blue);
+  }
+  @keyframes animate-appear {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
   }
 `;
 

@@ -40,8 +40,8 @@ const ModalStyle = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  z-index: 50;
-  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  background-color: rgb(135, 206, 235, 0.9);
   button {
     display: flex;
     color: var(--color-white);
