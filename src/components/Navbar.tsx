@@ -15,10 +15,10 @@ const Navbar = ({ setContactFlag }: Props) => {
       label: "Projects",
       href: "/projects",
     },
-    {
-      label: `GitHub`,
-      href: "https://github.com/jisooround",
-    },
+    // {
+    //   label: `GitHub`,
+    //   href: "https://github.com/jisooround",
+    // },
     {
       label: "Contact",
       href: "",
