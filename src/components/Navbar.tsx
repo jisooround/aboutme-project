@@ -1,11 +1,18 @@
+import { clipboard } from "@/utills/clipboard";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { IoCloseOutline, IoMenu } from "react-icons/io5";
+import { HiOutlineMail } from "react-icons/hi";
+import { useState } from "react";
+
+import { ToastContainer, toast } from "react-toastify";
 interface Props {
   setContactFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Navbar = ({ setContactFlag }: Props) => {
   const location = useLocation();
+  const [moMenuIsShow, setMoMenuIsShow] = useState<boolean>(false);
   const menuList = [
     {
       label: "About me",
@@ -15,10 +22,6 @@ const Navbar = ({ setContactFlag }: Props) => {
       label: "Projects",
       href: "/projects",
     },
-    // {
-    //   label: `GitHub`,
-    //   href: "https://github.com/jisooround",
-    // },
     {
       label: "Contact",
       href: "",
@@ -26,41 +29,105 @@ const Navbar = ({ setContactFlag }: Props) => {
   ];
   return (
     <ContainerStyle>
-      <LogoStyle to="/">
-        <img src="/logo_new.svg" alt="logo image" />
-        <p>mudi's page.</p>
-      </LogoStyle>
-      <MenuListStyle>
-        {menuList.map((item) => (
-          <Link
-            to={`${item.href}`}
-            target={item.label === "GitHub" ? "_blank" : "_self"}
-            key={item.label}
+      <ToastContainer
+        autoClose={1000}
+        position="bottom-right"
+        hideProgressBar={false}
+      />
+      {/* === PC version === */}
+      <PCversionStyle>
+        <LogoStyle to="/">
+          <img src="/logo_new.svg" alt="logo image" />
+          <p>mudi's page.</p>
+        </LogoStyle>
+        <MenuListStyle>
+          {menuList.map((item) => (
+            <Link
+              to={`${item.href}`}
+              key={item.label}
+              onClick={() => {
+                item.label === "Contact" ? setContactFlag(true) : "";
+              }}
+            >
+              <li className={item.href === location.pathname ? "bold" : ""}>
+                {item.label}
+              </li>
+            </Link>
+          ))}
+        </MenuListStyle>
+        <RightStyle>
+          <p
             onClick={() => {
-              item.label === "Contact" ? setContactFlag(true) : "";
+              clipboard("9utesleben@gmail.com");
             }}
           >
-            <li className={item.href === location.pathname ? "bold" : ""}>
-              {item.label}
-            </li>
-          </Link>
-        ))}
-      </MenuListStyle>
-      <RightStyle>
-        <p>
-          <a href="mailto:9utesleben@gmail.com">9utesleben@gmail.com</a>
-        </p>
-      </RightStyle>
+            9utesleben@gmail.com
+          </p>
+        </RightStyle>
+      </PCversionStyle>
+      {/* === MO version === */}
+      <MOversionStyle>
+        <LogoStyle to="/">
+          <img src="/logo_new.svg" alt="logo image" />
+          <p>mudi's page.</p>
+        </LogoStyle>
+        <div>
+          <IoMenu
+            onClick={() => {
+              setMoMenuIsShow((state) => !state);
+            }}
+          />
+          <MoMenuListStyle className={moMenuIsShow ? "show" : ""}>
+            <div>
+              <p>
+                <Link
+                  // className={href === "/" ? "bold" : ""}
+                  to={"/"}
+                  onClick={() => {
+                    setMoMenuIsShow(false);
+                  }}
+                >
+                  Home
+                </Link>
+              </p>
+              {menuList.map((item) => (
+                <p>
+                  <Link
+                    className={item.href === location.pathname ? "bold" : ""}
+                    to={`${item.href}`}
+                    key={item.label}
+                    onClick={() => {
+                      item.label === "Contact"
+                        ? setContactFlag(true)
+                        : setMoMenuIsShow(false);
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                </p>
+              ))}
+            </div>
+            <IoCloseOutline
+              onClick={() => {
+                setMoMenuIsShow(false);
+              }}
+            />
+          </MoMenuListStyle>
+        </div>
+      </MOversionStyle>
     </ContainerStyle>
   );
 };
 
 const ContainerStyle = styled.div`
+  width: 100%;
+`;
+
+const PCversionStyle = styled.div`
   display: grid;
   position: fixed;
   z-index: 99999;
   background-color: var(--color-white);
-
   grid-template-columns: 1fr 3fr 1fr;
   width: 100%;
   justify-content: space-between;
@@ -68,12 +135,13 @@ const ContainerStyle = styled.div`
   box-sizing: border-box;
   padding: var(--padding-default);
   height: 87px;
-  /* background-color: yellow; */
   img {
-    /* background-color: pink; */
     width: 2.4rem;
     height: auto;
     cursor: pointer;
+  }
+  @media screen and (max-width: 1100px) {
+    display: none;
   }
 `;
 
@@ -123,6 +191,95 @@ const RightStyle = styled.div`
     padding-bottom: 6px;
     border-bottom: 1px solid var(--color-black90);
     text-align: right;
+    cursor: pointer;
+  }
+`;
+
+const MOversionStyle = styled.div`
+  @media screen and (max-width: 1100px) {
+    display: flex;
+    width: 100%;
+    height: 87px;
+    padding: var(--padding-default);
+    position: fixed;
+    flex-wrap: nowrap;
+    z-index: 99999;
+    background-color: var(--color-white);
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    img {
+      width: 2.4rem;
+      height: auto;
+      cursor: pointer;
+    }
+    svg {
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--color-black);
+    }
+  }
+`;
+
+const MoMenuListStyle = styled.div`
+  width: 100%;
+  height: 100vh;
+  padding: var(--padding-default);
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: space-between;
+  background-color: var(--color-skyblue);
+  transform: translateX(-150vw);
+  transition: all 0.5s ease-in-out;
+  &.show {
+    transform: translateX(0);
+    transition: all 0.5s ease-in-out;
+  }
+  div {
+    width: 100%;
+    padding-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 20px;
+    p {
+      width: 100%;
+    }
+    a {
+      color: var(--color-white);
+      font-size: 36px;
+      transition: all.2s;
+      cursor: pointer;
+      &:hover {
+        border-bottom: 2px solid var(--color-white);
+        transition: none;
+      }
+      &.bold {
+        font-weight: 600;
+        border-bottom: 2px solid var(--color-white);
+      }
+    }
+  }
+  svg {
+    font-size: 4.375rem;
+    color: var(--color-white);
+  }
+  @media screen and (min-width: 1100px) {
+    display: none;
+  }
+  @media screen and (max-width: 670px) {
+    div {
+      a,
+      p {
+        font-size: 28px;
+        transition: all.3s;
+      }
+    }
   }
 `;
 

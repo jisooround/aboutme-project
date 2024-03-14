@@ -44,7 +44,7 @@ const ContactPopup = ({ setContactFlag }: Props) => {
     <PopupStyle>
       <ToastContainer
         autoClose={1000}
-        position="top-center"
+        position="bottom-right"
         hideProgressBar={false}
       />
       <BackgroundStyle

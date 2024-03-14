@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import ContactPopup from "./ContactPopup";
-import { RxEyeNone } from "react-icons/rx";
 
 type Props = {
   children: React.ReactNode;
