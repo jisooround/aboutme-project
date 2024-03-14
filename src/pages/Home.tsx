@@ -42,7 +42,6 @@ const ContainerStyle = styled.div`
   grid-template-columns: 4fr 1fr;
   align-content: center;
   width: 100%;
-  height: 100%;
   padding: var(--padding-default);
   box-sizing: border-box;
   height: calc(100vh - 87px);

@@ -68,10 +68,10 @@ const CardStyle = styled.div`
   box-sizing: border-box;
   padding: 20px 1.25rem 1.875rem 1.25rem;
   cursor: pointer;
-  box-shadow: 0.1875rem 0.1875rem 0.9375rem var(--color-black60);
+  box-shadow: 3px 2px 8px var(--color-black30);
   transition: transform 0.3s ease;
   &:hover {
-    box-shadow: 0.1875rem 0.1875rem 0.9375rem var(--color-black60);
+    box-shadow: 5px 2px 8px var(--color-black30);
     transform: translateY(-5px);
   }
   h3 {

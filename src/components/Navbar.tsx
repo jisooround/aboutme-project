@@ -119,13 +119,12 @@ const Navbar = ({ setContactFlag }: Props) => {
   );
 };
 
-const ContainerStyle = styled.div`
-  width: 100%;
-`;
+const ContainerStyle = styled.div``;
 
 const PCversionStyle = styled.div`
   display: grid;
   position: fixed;
+  top: 0;
   z-index: 99999;
   background-color: var(--color-white);
   grid-template-columns: 1fr 3fr 1fr;
@@ -196,14 +195,16 @@ const RightStyle = styled.div`
 `;
 
 const MOversionStyle = styled.div`
+  display: none;
   @media screen and (max-width: 1100px) {
     display: flex;
     width: 100%;
     height: 87px;
     padding: var(--padding-default);
     position: fixed;
-    flex-wrap: nowrap;
+    top: 0;
     z-index: 99999;
+    flex-wrap: nowrap;
     background-color: var(--color-white);
     justify-content: space-between;
     align-items: center;

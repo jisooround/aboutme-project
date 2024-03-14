@@ -34,15 +34,14 @@ const Projects = () => {
 
 const CardListStyle = styled.div`
   display: grid;
-  padding: 4.25rem 0;
-  gap: 4.375rem;
+  /* padding: 4.25rem 0; */
+  margin: 87px auto 0;
   width: 85%;
-  height: 100%;
-  margin: 0 auto;
   padding-bottom: 100px;
   justify-items: center;
   grid-template-columns: repeat(3, minmax(30%, 1fr));
   position: relative;
+  gap: 4.375rem;
   @media ${(props) => props.theme.laptop} {
     gap: 30px;
     grid-template-columns: repeat(2, minmax(40%, 1fr));
@@ -56,17 +55,15 @@ const CardListStyle = styled.div`
     color: var(--color-white);
     font-weight: 500;
     border-radius: 20px;
-    border-bottom: 1px solid var(--color-white);
     position: absolute;
     display: flex;
     align-items: center;
     gap: 0.5em;
+    top: -60px;
     right: 0;
   }
-
   a:hover {
-    color: var(--color-blue);
-    border: 1px solid var(--color-blue);
+    box-shadow: 3px 2px 8px var(--color-black30);
   }
 `;
 
