@@ -220,6 +220,9 @@ const MOversionStyle = styled.div`
       color: var(--color-black);
     }
   }
+  @media screen and (max-width: 620px) {
+    padding: 1.5rem;
+  }
 `;
 
 const MoMenuListStyle = styled.div`

@@ -45,6 +45,19 @@ const ContainerStyle = styled.div`
   padding: var(--padding-default);
   box-sizing: border-box;
   height: calc(100vh - 87px);
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media screen and (max-width: 620px) {
+    padding: 1.5rem;
+    justify-content: center;
+  }
+  @media screen and (max-width: 580px) {
+    align-content: flex-start;
+    padding-top: 150px;
+  }
 `;
 
 const TextWrap = styled.div`
@@ -59,7 +72,6 @@ const TextWrap = styled.div`
   padding-left: 60px;
   box-sizing: border-box;
   h1 {
-    margin-top: -70px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -1px;
@@ -84,6 +96,38 @@ const TextWrap = styled.div`
       opacity: 1;
     }
   }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    h1 {
+      font-size: 46px;
+      &:lang(ko) {
+        word-break: keep-all;
+      }
+    }
+    p {
+      &:lang(ko) {
+        word-break: keep-all;
+      }
+    }
+  }
+  @media screen and (max-width: 580px) {
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    justify-content: center;
+    h1 {
+      text-align: center;
+      font-size: 36px;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+      padding-top: 10px;
+    }
+  }
 `;
 
 const ButtonWrap = styled.div`
@@ -101,6 +145,23 @@ const ButtonWrap = styled.div`
     border-radius: 50px;
     border: 1px solid var(--color-black90);
     font-size: 1.2rem;
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    padding-right: 0;
+    height: auto;
+    button {
+      margin-top: 20px;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 410px) {
+    button {
+      margin-top: 40px;
+    }
   }
 `;
 
