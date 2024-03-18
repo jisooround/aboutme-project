@@ -45,13 +45,13 @@ const ProjectDetail = ({ id }: Props) => {
             <h2>{data?.title}</h2>
             <h4>{data?.description}</h4>
             <div>
-              <p>작업 기간</p>
+              <p className="title">작업 기간</p>
               <p>
                 {formatDate(data?.dateStart)} - {formatDate(data?.dateEnd)}
               </p>
             </div>
             <div>
-              <p>팀 구성</p>
+              <p className="title">팀 구성</p>
               <p>{data?.team}</p>
             </div>
             <span>
@@ -119,6 +119,9 @@ const ContentArea = styled.div`
       transform: none;
     }
   }
+  @media screen and (max-width: 1000px) {
+    width: 80%;
+  }
   @media screen and (max-width: 580px) {
     width: 80%;
     padding: 2.125rem 1.25rem;
@@ -169,6 +172,16 @@ const InfoAreaStyle = styled.div`
     padding-bottom: 0.625rem;
     p:nth-child(2n) {
       font-weight: 400;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      .title {
+        padding: 5px 0;
+        width: 100%;
+      }
     }
   }
 `;
