@@ -1,3 +1,4 @@
+import LoadingUi from "@/components/ui/LoadingUi";
 import { AboutMeType } from "@/model/aboutme";
 import { getAboutMe } from "@/service/aboutme";
 import { useEffect, useState } from "react";
@@ -5,27 +6,36 @@ import styled from "styled-components";
 
 const AboutMe = () => {
   const [data, setData] = useState<AboutMeType>();
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const fetchData = async () => {
       const projectDetail = await getAboutMe();
       setData(projectDetail[0]);
+      setLoading(false);
     };
 
     fetchData();
   }, []);
 
   return (
-    <ContainerStyle>
-      <ItemStyle>
-        <div className="main-image">
-          <img src={data?.imageUrl} />
-        </div>
-        <div className="main-text">
-          <h2>({data?.title})</h2>
-          <p>{data?.description}</p>
-        </div>
-      </ItemStyle>
-    </ContainerStyle>
+    <>
+      {loading ? (
+        <LoadingUi />
+      ) : (
+        <ContainerStyle>
+          <ItemStyle>
+            <div className="main-image">
+              <img src={data?.imageUrl} />
+            </div>
+            <div className="main-text">
+              <h2>({data?.title})</h2>
+              <p>{data?.description}</p>
+            </div>
+          </ItemStyle>
+        </ContainerStyle>
+      )}
+    </>
   );
 };
 

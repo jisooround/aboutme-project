@@ -12,9 +12,10 @@ const LoadingUi = () => {
 const LoadingStyle = styled.div`
   width: 100%;
   height: 100%;
+  margin: auto;
   background-color: var(--color-white);
   text-align: center;
-  padding-top: 150px;
+  padding-top: 100px;
 `;
 
 export default LoadingUi;
