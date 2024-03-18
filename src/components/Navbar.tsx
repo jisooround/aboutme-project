@@ -119,14 +119,17 @@ const Navbar = ({ setContactFlag }: Props) => {
   );
 };
 
-const ContainerStyle = styled.div``;
+const ContainerStyle = styled.div`
+  /* backdrop-filter: blur(10px); */
+`;
 
 const PCversionStyle = styled.div`
   display: grid;
   position: fixed;
   top: 0;
   z-index: 99999;
-  background-color: var(--color-white);
+  background-color: rgba(242, 242, 242, 0.1);
+  backdrop-filter: blur(10px);
   grid-template-columns: 1fr 3fr 1fr;
   width: 100%;
   justify-content: space-between;
@@ -151,6 +154,7 @@ const LogoStyle = styled(Link)`
   p {
     font-size: 1.2rem;
     color: var(--color-black90);
+    mix-blend-mode: difference;
   }
 `;
 
@@ -171,6 +175,7 @@ const MenuListStyle = styled.ul`
     margin-bottom: -6px;
     padding-bottom: 6px;
     text-align: center;
+    mix-blend-mode: difference;
   }
   li:hover {
     display: inline-block;
@@ -205,7 +210,9 @@ const MOversionStyle = styled.div`
     top: 0;
     z-index: 99999;
     flex-wrap: nowrap;
-    background-color: var(--color-white);
+    /* background-color: var(--color-white); */
+    background-color: rgba(242, 242, 242, 0.1);
+    backdrop-filter: blur(10px);
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;

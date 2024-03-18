@@ -23,7 +23,7 @@ const GeneralLayoutStyle = styled.div`
   width: 100%;
 `;
 
-const GeneralBodyStyle = styled.div<Props>`
+const GeneralBodyStyle = styled.div`
   padding-top: 87px;
 `;
 export default GeneralLayout;
