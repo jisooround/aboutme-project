@@ -4,7 +4,7 @@ import styled from "styled-components";
 const LoadingUi = () => {
   return (
     <LoadingStyle>
-      <InfinitySpin width="200" color="#4fa94d" />
+      <InfinitySpin width="200" color={`var(--color-skyblue)`} />
     </LoadingStyle>
   );
 };
