@@ -94,6 +94,10 @@ const PopupStyle = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  @media screen and (max-width: 580px) {
+    align-content: center;
+    /* margin-top: -50px; */
+  }
 `;
 
 const BackgroundStyle = styled.div`
@@ -193,7 +197,9 @@ const ContentWrapStyle = styled.div`
   @media screen and (max-width: 600px) {
     width: 80%;
     transition: 0.2s;
+    margin-top: -50px;
   }
+
   @media screen and (max-width: 360px) {
     width: 90%;
     transition: 0.2s;
