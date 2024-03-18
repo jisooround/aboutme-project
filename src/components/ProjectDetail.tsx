@@ -81,6 +81,7 @@ const ContentArea = styled.div`
   width: 50%;
   height: 100%;
   overflow-y: auto;
+  box-sizing: border-box;
   animation-name: animate-appear;
   animation-duration: 0.8s;
   animation-delay: 0.1s;
@@ -117,6 +118,10 @@ const ContentArea = styled.div`
       opacity: 1;
       transform: none;
     }
+  }
+  @media screen and (max-width: 580px) {
+    width: 80%;
+    padding: 2.125rem 1.25rem;
   }
 `;
 

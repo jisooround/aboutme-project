@@ -121,6 +121,16 @@ const InfoStyle = styled.div`
       background-color: var(--color-pink);
     }
   }
+  @media screen and (max-width: 580px) {
+    div {
+      flex-wrap: wrap;
+      gap: 5px;
+      p {
+        width: 100%;
+        padding-bottom: 5px;
+      }
+    }
+  }
 
   ul {
     padding-top: 18px;
