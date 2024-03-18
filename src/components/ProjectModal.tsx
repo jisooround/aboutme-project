@@ -20,7 +20,6 @@ const ProjectModal = ({ children, setOpenModal }: Props) => {
         className="fixed top-0 right-0 p-8 text-white"
         onClick={() => {
           setOpenModal(false);
-          console.log("click");
         }}
       >
         <RxCross1 />

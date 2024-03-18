@@ -29,26 +29,28 @@ const ProjectCard = ({ item }: Props) => {
     }
   }, [openModal]);
   return (
-    <CardStyle>
-      <ImageStyle onClick={() => setOpenModal(true)}>
-        <img src={imageUrl} />
-      </ImageStyle>
-      <h3>
-        {icon} {title}
-      </h3>
-      <InfoStyle>
-        <div>
-          <p>
-            {formatDate(dateStart)} - {formatDate(dateEnd)}
-          </p>
-          <span>{team}</span>
-        </div>
-        <ul>
-          {tool.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </InfoStyle>
+    <>
+      <CardStyle onClick={() => setOpenModal(true)}>
+        <ImageStyle>
+          <img src={imageUrl} />
+        </ImageStyle>
+        <h3>
+          {icon} {title}
+        </h3>
+        <InfoStyle>
+          <div>
+            <p>
+              {formatDate(dateStart)} - {formatDate(dateEnd)}
+            </p>
+            <span>{team}</span>
+          </div>
+          <ul>
+            {tool.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </InfoStyle>
+      </CardStyle>
       {openModal && (
         <ModalPortal>
           <ProjectModal setOpenModal={setOpenModal}>
@@ -56,7 +58,7 @@ const ProjectCard = ({ item }: Props) => {
           </ProjectModal>
         </ModalPortal>
       )}
-    </CardStyle>
+    </>
   );
 };
 
