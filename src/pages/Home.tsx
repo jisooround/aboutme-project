@@ -55,8 +55,8 @@ const ContainerStyle = styled.div`
     justify-content: center;
   }
   @media screen and (max-width: 580px) {
-    align-content: flex-start;
-    padding-top: 150px;
+    align-content: center;
+    margin-top: -50px;
   }
 `;
 
@@ -120,7 +120,7 @@ const TextWrap = styled.div`
     justify-content: center;
     h1 {
       text-align: center;
-      font-size: 36px;
+      font-size: 32px;
     }
     p {
       text-align: center;
