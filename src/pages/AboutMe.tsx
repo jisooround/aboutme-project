@@ -46,8 +46,9 @@ const ContainerStyle = styled.div`
 
 const ItemStyle = styled.div`
   width: 100%;
-  height: auto;
-  padding: 4rem 4rem 0 4rem;
+  height: calc(100vh - 87px);
+  overflow: scroll;
+  padding: 4rem 4rem 2rem 4rem;
   box-sizing: border-box;
   background-color: var(--color-skyblue);
   .main-image {
