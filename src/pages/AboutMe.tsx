@@ -57,7 +57,8 @@ const ContainerStyle = styled.div`
 const ItemStyle = styled.div`
   width: 100%;
   height: calc(100vh - 87px);
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 4rem 4rem 2rem 4rem;
   box-sizing: border-box;
   background-color: var(--color-skyblue);
