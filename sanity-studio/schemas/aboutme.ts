@@ -25,6 +25,11 @@ export default {
       title: 'Icon',
     },
     {
+      name: 'image',
+      type: 'image',
+      title: 'Image',
+    },
+    {
       name: 'content',
       type: 'array',
       title: 'Content',

@@ -45,13 +45,13 @@ const ProjectDetail = ({ id }: Props) => {
             <h2>{data?.title}</h2>
             <h4>{data?.description}</h4>
             <div>
-              <p>작업 기간</p>
+              <p className="title">작업 기간</p>
               <p>
                 {formatDate(data?.dateStart)} - {formatDate(data?.dateEnd)}
               </p>
             </div>
             <div>
-              <p>팀 구성</p>
+              <p className="title">팀 구성</p>
               <p>{data?.team}</p>
             </div>
             <span>
@@ -81,6 +81,11 @@ const ContentArea = styled.div`
   width: 50%;
   height: 100%;
   overflow-y: auto;
+  box-sizing: border-box;
+  animation-name: animate-appear;
+  animation-duration: 0.8s;
+  animation-delay: 0.1s;
+  animation-fill-mode: backwards;
   &::-webkit-scrollbar {
     width: 1.25rem;
     padding-right: 0.625rem;
@@ -103,6 +108,23 @@ const ContentArea = styled.div`
     margin: 2.5rem 0;
     height: 0.0625rem;
     background-color: var(--color-blue);
+  }
+  @keyframes animate-appear {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 580px) {
+    width: 80%;
+    padding: 2.125rem 1.25rem;
   }
 `;
 
@@ -150,6 +172,16 @@ const InfoAreaStyle = styled.div`
     padding-bottom: 0.625rem;
     p:nth-child(2n) {
       font-weight: 400;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      .title {
+        padding: 5px 0;
+        width: 100%;
+      }
     }
   }
 `;

@@ -4,6 +4,8 @@ import { ProjectsListItemType } from "@/model/project";
 import { getProjectList } from "@/service/projects";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { RiNotionFill } from "react-icons/ri";
+import LoadingUi from "@/components/ui/LoadingUi";
 
 interface Menu {
   name: string;
@@ -23,12 +25,14 @@ const Projects = () => {
     { name: "Development" },
     { name: "Design" },
   ];
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const projectList = await getProjectList();
       setData(projectList);
       console.log(projectList);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -99,6 +103,24 @@ const Projects = () => {
           />
         </div>
       </PriviewWrap>
+      {/* // <>
+    //   {loading ? (
+    //     <LoadingUi />
+    //   ) : (
+    //     <CardListStyle>
+    //       <a
+    //         target="_blank"
+    //         href="https://kaput-trick-978.notion.site/Portfolio-74a630603cb84dc1aff367ef755a5f83?pvs=4"
+    //       >
+    //         <RiNotionFill />
+    //         노션으로 보기 👀
+    //       </a>
+    //       {data.map((item) => (
+    //         <ProjectCard key={item.id} item={item} />
+    //       ))}
+    //     </CardListStyle>
+    //   )}
+          // </> */}
     </ProjectContainer>
   );
 };
@@ -184,6 +206,22 @@ const PriviewWrap = styled.div`
     object-fit: contain;
     img {
       width: 400px;
+    }
+    a {
+      background-color: var(--color-skyblue);
+      padding: 10px 20px;
+      color: var(--color-white);
+      font-weight: 500;
+      border-radius: 20px;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      top: -60px;
+      right: 0;
+    }
+    a:hover {
+      box-shadow: 3px 2px 8px var(--color-black30);
     }
   }
 `;

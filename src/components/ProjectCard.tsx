@@ -29,26 +29,28 @@ const ProjectCard = ({ item }: Props) => {
     }
   }, [openModal]);
   return (
-    <CardStyle>
-      <ImageStyle onClick={() => setOpenModal(true)}>
-        <img src={imageUrl} />
-      </ImageStyle>
-      <h3>
-        {icon} {title}
-      </h3>
-      <InfoStyle>
-        <div>
-          <p>
-            {formatDate(dateStart)} - {formatDate(dateEnd)}
-          </p>
-          <span>{team}</span>
-        </div>
-        <ul>
-          {tool.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </InfoStyle>
+    <>
+      <CardStyle onClick={() => setOpenModal(true)}>
+        <ImageStyle>
+          <img src={imageUrl} />
+        </ImageStyle>
+        <h3>
+          {icon} {title}
+        </h3>
+        <InfoStyle>
+          <div>
+            <p>
+              {formatDate(dateStart)} - {formatDate(dateEnd)}
+            </p>
+            <span>{team}</span>
+          </div>
+          <ul>
+            {tool.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </InfoStyle>
+      </CardStyle>
       {openModal && (
         <ModalPortal>
           <ProjectModal setOpenModal={setOpenModal}>
@@ -56,7 +58,7 @@ const ProjectCard = ({ item }: Props) => {
           </ProjectModal>
         </ModalPortal>
       )}
-    </CardStyle>
+    </>
   );
 };
 
@@ -68,10 +70,10 @@ const CardStyle = styled.div`
   box-sizing: border-box;
   padding: 20px 1.25rem 1.875rem 1.25rem;
   cursor: pointer;
-  box-shadow: 0.1875rem 0.1875rem 0.9375rem var(--color-black60);
+  box-shadow: 3px 2px 8px var(--color-black30);
   transition: transform 0.3s ease;
   &:hover {
-    box-shadow: 0.1875rem 0.1875rem 0.9375rem var(--color-black60);
+    box-shadow: 5px 2px 8px var(--color-black30);
     transform: translateY(-5px);
   }
   h3 {
@@ -117,6 +119,16 @@ const InfoStyle = styled.div`
       padding: 0.3125rem 0.625rem;
       border-radius: 0.3125rem;
       background-color: var(--color-pink);
+    }
+  }
+  @media screen and (max-width: 580px) {
+    div {
+      flex-wrap: wrap;
+      gap: 5px;
+      p {
+        width: 100%;
+        padding-bottom: 5px;
+      }
     }
   }
 

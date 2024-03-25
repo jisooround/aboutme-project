@@ -1,7 +1,9 @@
 import HomeSlide from "@/components/HomeSlide";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <ContainerStyle>
       <TextWrap>
@@ -23,7 +25,13 @@ const Home = () => {
         </div>
       </TextWrap>
       <ButtonWrap>
-        <button>Project 👀</button>
+        <button
+          onClick={() => {
+            navigate("/projects");
+          }}
+        >
+          Project 👀
+        </button>
       </ButtonWrap>
     </ContainerStyle>
   );
@@ -32,10 +40,24 @@ const Home = () => {
 const ContainerStyle = styled.div`
   display: grid;
   grid-template-columns: 4fr 1fr;
+  align-content: center;
   width: 100%;
-  height: 100%;
   padding: var(--padding-default);
   box-sizing: border-box;
+  height: calc(100vh - 87px);
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media screen and (max-width: 620px) {
+    padding: 1.5rem;
+    justify-content: center;
+  }
+  @media screen and (max-width: 580px) {
+    align-content: center;
+    margin-top: -50px;
+  }
 `;
 
 const TextWrap = styled.div`
@@ -50,7 +72,6 @@ const TextWrap = styled.div`
   padding-left: 60px;
   box-sizing: border-box;
   h1 {
-    margin-top: -70px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -1px;
@@ -65,6 +86,7 @@ const TextWrap = styled.div`
   }
   strong {
     font-weight: 700;
+    color: var(--color-skyblue);
   }
   @keyframes fadein {
     from {
@@ -72,6 +94,38 @@ const TextWrap = styled.div`
     }
     to {
       opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    h1 {
+      font-size: 46px;
+      &:lang(ko) {
+        word-break: keep-all;
+      }
+    }
+    p {
+      &:lang(ko) {
+        word-break: keep-all;
+      }
+    }
+  }
+  @media screen and (max-width: 580px) {
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    justify-content: center;
+    h1 {
+      text-align: center;
+      font-size: 32px;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+      padding-top: 10px;
     }
   }
 `;
@@ -91,6 +145,23 @@ const ButtonWrap = styled.div`
     border-radius: 50px;
     border: 1px solid var(--color-black90);
     font-size: 1.2rem;
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    padding-right: 0;
+    height: auto;
+    button {
+      margin-top: 20px;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 410px) {
+    button {
+      margin-top: 40px;
+    }
   }
 `;
 

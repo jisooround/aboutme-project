@@ -39,6 +39,7 @@ body {
 :root {
   // color
   --color-blue : #0085FF;
+  --color-skyblue: #87ceeb;
   --color-pink : #FF89C9;
   --color-red :rgb(255, 42, 0);
   --color-point :rgb(255, 85, 0);

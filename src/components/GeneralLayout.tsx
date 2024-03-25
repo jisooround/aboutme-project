@@ -1,15 +1,19 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
+import ContactPopup from "./ContactPopup";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const GeneralLayout = ({ children }: Props) => {
+  const [contactFlag, setContactFlag] = useState<boolean>(false);
+
   return (
     <GeneralLayoutStyle>
-      <Navbar />
+      {contactFlag && <ContactPopup setContactFlag={setContactFlag} />}
+      <Navbar setContactFlag={setContactFlag} />
       <GeneralBodyStyle>{children}</GeneralBodyStyle>
     </GeneralLayoutStyle>
   );
@@ -17,10 +21,9 @@ const GeneralLayout = ({ children }: Props) => {
 
 const GeneralLayoutStyle = styled.div`
   width: 100%;
-  /* padding-bottom: 9.375rem; */
 `;
 
 const GeneralBodyStyle = styled.div`
-  height: calc(100vh - 87px);
+  padding-top: 87px;
 `;
 export default GeneralLayout;
