@@ -7,6 +7,7 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import GeneralLayout from "./components/GeneralLayout";
+import Test from "./pages/Test";
 
 interface RouterBase {
   id: number; // 페이지 아이디 (반복문용 고유값)
@@ -39,6 +40,12 @@ export const routerData: RouterBase[] = [
     path: "/contact",
     label: "contact",
     element: <Contact />,
+  },
+  {
+    id: 4,
+    path: "/test",
+    label: "test",
+    element: <Test />,
   },
 ];
 

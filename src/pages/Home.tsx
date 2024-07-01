@@ -1,4 +1,3 @@
-import HomeSlide from "@/components/HomeSlide";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -19,8 +18,7 @@ const Home = () => {
             디자인과 개발의 {""}
             <strong>창의적인 사고력과 논리적인 사고력을 결합</strong>하여
             <br />
-            <strong>현실적이고 사용자 친화적인 서비스</strong>를 만들고자
-            합니다.
+            <strong>현실적이고 사용자 친화적인 서비스</strong>를 만들고자 합니다.
           </p>
         </div>
       </TextWrap>
