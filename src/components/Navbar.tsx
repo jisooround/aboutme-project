@@ -29,11 +29,7 @@ const Navbar = ({ setContactFlag }: Props) => {
   ];
   return (
     <ContainerStyle>
-      <ToastContainer
-        autoClose={1000}
-        position="bottom-right"
-        hideProgressBar={false}
-      />
+      <ToastContainer autoClose={1000} position="bottom-right" hideProgressBar={false} />
       {/* === PC version === */}
       <PCversionStyle>
         <LogoStyle to="/">
@@ -49,9 +45,7 @@ const Navbar = ({ setContactFlag }: Props) => {
                 item.label === "Contact" ? setContactFlag(true) : "";
               }}
             >
-              <li className={item.href === location.pathname ? "bold" : ""}>
-                {item.label}
-              </li>
+              <li className={item.href === location.pathname ? "bold" : ""}>{item.label}</li>
             </Link>
           ))}
         </MenuListStyle>
@@ -91,15 +85,13 @@ const Navbar = ({ setContactFlag }: Props) => {
                 </Link>
               </p>
               {menuList.map((item) => (
-                <p>
+                <p key={item.label}>
                   <Link
                     className={item.href === location.pathname ? "bold" : ""}
                     to={`${item.href}`}
                     key={item.label}
                     onClick={() => {
-                      item.label === "Contact"
-                        ? setContactFlag(true)
-                        : setMoMenuIsShow(false);
+                      item.label === "Contact" ? setContactFlag(true) : setMoMenuIsShow(false);
                     }}
                   >
                     {item.label}
