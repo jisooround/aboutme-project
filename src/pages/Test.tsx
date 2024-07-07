@@ -5,8 +5,6 @@ import { getProjectList } from "@/service/projects";
 import { memo, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import ProjectCard from "@/components/ProjectCard";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useScroll } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
 

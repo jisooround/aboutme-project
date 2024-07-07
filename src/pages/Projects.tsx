@@ -1,10 +1,10 @@
-import ProjectCard from "@/components/ProjectCard";
 import { ProjectsListItemType } from "@/model/project";
 import { getProjectList } from "@/service/projects";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { RiNotionFill } from "react-icons/ri";
 import LoadingUi from "@/components/ui/LoadingUi";
+import ProjectCardOld from "@/components/ProjectCardOld";
 
 const Projects = () => {
   const [data, setData] = useState<ProjectsListItemType[]>([]);
@@ -26,15 +26,12 @@ const Projects = () => {
         <LoadingUi />
       ) : (
         <CardListStyle>
-          <a
-            target="_blank"
-            href="https://kaput-trick-978.notion.site/Portfolio-74a630603cb84dc1aff367ef755a5f83?pvs=4"
-          >
+          <a target="_blank" href="https://kaput-trick-978.notion.site/Portfolio-74a630603cb84dc1aff367ef755a5f83?pvs=4">
             <RiNotionFill />
             노션으로 보기 👀
           </a>
           {data.map((item) => (
-            <ProjectCard key={item.id} item={item} />
+            <ProjectCardOld key={item.id} item={item} />
           ))}
         </CardListStyle>
       )}
