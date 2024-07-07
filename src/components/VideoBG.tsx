@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Intro = () => {
-  const [frameSrc, setFrameSrc] = useState<string>("/frames/frame_0000.webp");
+  const [frameSrc, setFrameSrc] = useState<string>("https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_0000.webp");
   const videoRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: videoRef,
     offset: ["start end", "end start"],
   });
 
-  const totalFrames = 100;
+  const totalFrames = 90;
   const rightTransform = useTransform(scrollYProgress, [0, 1], [-1000, 1000]);
   const leftTransform = useTransform(scrollYProgress, [0, 1], [1000, -1000]);
 
@@ -18,7 +18,7 @@ const Intro = () => {
     // 스크롤 진행도에 따라 프레임 이미지를 업데이트하는 함수
     const updateAtScroll = (progress: number) => {
       const frameIndex = Math.floor(progress * totalFrames);
-      const src = `/frames/frame_${String(frameIndex).padStart(4, "0")}.webp`;
+      const src = `https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_${String(frameIndex).padStart(4, "0")}.webp`;
       if (frameSrc !== src) {
         setFrameSrc(src);
       }
