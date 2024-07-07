@@ -2,47 +2,92 @@ import { motion, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-const VideoBG = () => {
-  const [frameSrc, setFrameSrc] = useState<string[]>([]);
-  const videoRef = useRef(null);
-  const { scrollYProgress } = useScroll();
+const Intro = () => {
+  const [frameSrc, setFrameSrc] = useState<string>("/frames/frame_0000.webp");
+  const videoRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: videoRef,
+    offset: ["start end", "end start"],
+  });
+
+  const totalFrames = 100;
+  const progress = scrollYProgress.get();
 
   useEffect(() => {
-    updateAtScroll();
-  }, [frameSrc]);
+    // 스크롤 진행도에 따라 프레임 이미지를 업데이트하는 함수
+    const updateAtScroll = (progress: number) => {
+      const frameIndex = Math.floor(progress * totalFrames);
+      const src = `/frames/frame_${String(frameIndex).padStart(4, "0")}.webp`;
+      if (frameSrc !== src) {
+        setFrameSrc(src);
+      }
+    };
 
-  const updateAtScroll = () => {
-    const totalFrames = 50;
-    const progress = scrollYProgress.get();
-    const frameIndex = Math.floor(progress * totalFrames);
-    setFrameSrc([`/frames/frame_${String(frameIndex).padStart(4, "0")}.webp`]);
-  };
+    // 초기 스크롤 진행도 값을 가져와서 프레임 업데이트
+    updateAtScroll(scrollYProgress.get());
+
+    // 스크롤 진행도 변경 시 업데이트
+    const unsubscribe = scrollYProgress.on("change", (progress) => {
+      updateAtScroll(progress);
+    });
+
+    // 컴포넌트 언마운트 시 이벤트 해제
+    return () => {
+      unsubscribe();
+    };
+  }, [scrollYProgress]);
 
   return (
     <VideoContainer layout>
-      <motion.div ref={videoRef}>{frameSrc.length > 0 && <img src={frameSrc[0]} alt={"test"} width="100%" style={{ opacity: 0.8 }} />}</motion.div>
+      <StickyContainer ref={videoRef}>
+        <IntroWrap>
+          <div>Front-end Developer</div>
+          <div>for User Experience</div>
+        </IntroWrap>
+        {frameSrc && <img src={frameSrc} alt="frame" width="100%" />}
+      </StickyContainer>
     </VideoContainer>
   );
 };
 
 const VideoContainer = styled(motion.div)`
   width: 100%;
-  z-index: -1;
+  height: 100vh;
   position: fixed;
   top: 0;
+  left: 0;
+`;
+
+const IntroWrap = styled.div`
+  width: 100%;
+  height: calc(100vh - 87px);
+  margin-top: 87px;
+  mix-blend-mode: difference;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   div {
     width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 100%;
-      min-height: 100vh;
-      object-fit: cover;
+    bottom: 0;
+    font-size: 100px;
+    font-weight: 700;
+    color: var(--color-white);
+    /* animation: fadein 1s; */
+    &:nth-child(2) {
+      text-align: right;
     }
   }
 `;
-export default VideoBG;
+
+const StickyContainer = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+    min-height: 100vh;
+    object-fit: cover;
+  }
+`;
+export default Intro;
