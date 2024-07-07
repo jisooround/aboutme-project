@@ -10,7 +10,7 @@ const Intro = () => {
     offset: ["start end", "end start"],
   });
 
-  const totalFrames = 90;
+  const totalFrames = 100;
   const rightTransform = useTransform(scrollYProgress, [0, 1], [-1000, 1000]);
   const leftTransform = useTransform(scrollYProgress, [0, 1], [1000, -1000]);
 
