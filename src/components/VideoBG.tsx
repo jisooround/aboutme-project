@@ -1,4 +1,4 @@
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
@@ -11,7 +11,8 @@ const Intro = () => {
   });
 
   const totalFrames = 100;
-  const progress = scrollYProgress.get();
+  const rightTransform = useTransform(scrollYProgress, [0, 1], [-1000, 1000]);
+  const leftTransform = useTransform(scrollYProgress, [0, 1], [1000, -1000]);
 
   useEffect(() => {
     // 스크롤 진행도에 따라 프레임 이미지를 업데이트하는 함수
@@ -41,8 +42,8 @@ const Intro = () => {
     <VideoContainer layout>
       <StickyContainer ref={videoRef}>
         <IntroWrap>
-          <div>Front-end Developer</div>
-          <div>for User Experience</div>
+          <motion.div style={{ x: rightTransform }}>Front-end Developer</motion.div>
+          <motion.div style={{ x: leftTransform }}>for User Experience</motion.div>
         </IntroWrap>
         {frameSrc && <img src={frameSrc} alt="frame" width="100%" />}
       </StickyContainer>

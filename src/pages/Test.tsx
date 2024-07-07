@@ -57,7 +57,7 @@ const HomeContainer = styled(motion.div)`
 const ProjectWrap = styled.div`
   width: 100%;
   height: auto;
-  margin-top: 100vh;
+  margin-top: 120vh;
   padding-top: 100px;
   background-color: var(--color-black10);
   z-index: 1000;
