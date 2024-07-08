@@ -5,13 +5,20 @@ import { getProjectList } from "@/service/projects";
 import { memo, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import ProjectCard from "@/components/ProjectCard";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 type Props = {};
 
 const Test = (props: Props) => {
   const [data, setData] = useState<ProjectsListItemType[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start center", "start start"],
+  });
+  const projectOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const introOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,8 +32,10 @@ const Test = (props: Props) => {
 
   return (
     <HomeContainer layout>
-      <Intro />
-      <ProjectWrap>
+      <motion.div style={{ opacity: introOpacity }}>
+        <Intro />
+      </motion.div>
+      <ProjectWrap ref={ref} style={{ opacity: projectOpacity }}>
         <ProjectTitleWrap>
           <h2>Projects</h2>
         </ProjectTitleWrap>
@@ -52,13 +61,15 @@ const HomeContainer = styled(motion.div)`
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
+  background-color: var(--color-black10);
 `;
 
-const ProjectWrap = styled.div`
+const ProjectWrap = styled(motion.div)`
   width: 100%;
-  height: auto;
+  min-height: 100vh;
   margin-top: 120vh;
   padding-top: 100px;
+  box-sizing: border-box;
   background-color: var(--color-black10);
   z-index: 1000;
   display: flex;
@@ -73,6 +84,7 @@ const ProjectTitleWrap = styled.div`
     color: black;
     position: relative;
     margin-left: 20px;
+    margin-top: 87px;
     font-size: 100px;
     font-weight: 100;
     animation: fadein 1s;
@@ -89,7 +101,6 @@ const CardListStyle = styled.div`
   align-content: flex-start;
   margin: 87px auto 0;
   width: 100%;
-  padding-bottom: 100px;
   justify-items: center;
   position: relative;
   a {

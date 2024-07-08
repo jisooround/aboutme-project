@@ -14,18 +14,18 @@ const Navbar = ({ setContactFlag }: Props) => {
   const location = useLocation();
   const [moMenuIsShow, setMoMenuIsShow] = useState<boolean>(false);
   const menuList = [
-    {
-      label: "About me",
-      href: "/aboutme",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Contact",
-      href: "",
-    },
+    // {
+    //   label: "About me",
+    //   href: "/aboutme",
+    // },
+    // {
+    //   label: "Projects",
+    //   href: "/projects",
+    // },
+    // {
+    //   label: "GitHub",
+    //   href: "",
+    // },
   ];
   return (
     <ContainerStyle>
@@ -37,7 +37,7 @@ const Navbar = ({ setContactFlag }: Props) => {
           <p>mudi's page.</p>
         </LogoStyle>
         <MenuListStyle>
-          {menuList.map((item) => (
+          {/* {menuList.map((item) => (
             <Link
               to={`${item.href}`}
               key={item.label}
@@ -47,7 +47,7 @@ const Navbar = ({ setContactFlag }: Props) => {
             >
               <li className={item.href === location.pathname ? "bold" : ""}>{item.label}</li>
             </Link>
-          ))}
+          ))} */}
         </MenuListStyle>
         <RightStyle>
           <p
@@ -60,7 +60,7 @@ const Navbar = ({ setContactFlag }: Props) => {
         </RightStyle>
       </PCversionStyle>
       {/* === MO version === */}
-      <MOversionStyle>
+      {/* <MOversionStyle>
         <LogoStyle to="/">
           <img src="/logo_new.svg" alt="logo image" />
           <p>mudi's page.</p>
@@ -106,7 +106,7 @@ const Navbar = ({ setContactFlag }: Props) => {
             />
           </MoMenuListStyle>
         </div>
-      </MOversionStyle>
+      </MOversionStyle> */}
     </ContainerStyle>
   );
 };
@@ -134,9 +134,9 @@ const PCversionStyle = styled.div`
     height: auto;
     cursor: pointer;
   }
-  @media screen and (max-width: 1100px) {
+  /* @media screen and (max-width: 1100px) {
     display: none;
-  }
+  } */
 `;
 
 const LogoStyle = styled(Link)`
