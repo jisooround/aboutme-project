@@ -56,6 +56,11 @@ export default {
       title: 'BlogURL',
     },
     {
+      name: 'viewurl',
+      type: 'string',
+      title: 'ViewURL',
+    },
+    {
       name: 'datestart',
       type: 'date',
       title: 'Date(start)',

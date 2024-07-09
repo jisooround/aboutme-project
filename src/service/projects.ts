@@ -14,6 +14,9 @@ export async function getProjectList() {
     team,
     order,
     tool,
+    "gitUrl" : githuburl,
+    "blogUrl" : blogurl,
+    "viewUrl" : viewurl,
     "imageUrl":image.asset._ref
   }`,
     )

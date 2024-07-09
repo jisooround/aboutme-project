@@ -4,6 +4,7 @@ interface TransitionProps {
 }
 
 const Gradient = ({ transition }: TransitionProps) => {
+  if (!transition) return null;
   return <GradientContainer transition={transition ?? false}></GradientContainer>;
 };
 

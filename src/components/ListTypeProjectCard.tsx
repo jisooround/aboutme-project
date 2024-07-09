@@ -10,8 +10,12 @@ type Props = {
 };
 
 const ListTypeProjectCard = ({ item }: Props) => {
-  const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id } = item;
+  const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id, gitUrl, viewUrl } = item;
   const [isOpenInfo, setIsOpenInfo] = useState<boolean>(false);
+
+  const openLinkInNewTab = (path: string) => {
+    window.open(path, "_blank");
+  };
 
   return (
     <>
@@ -29,11 +33,19 @@ const ListTypeProjectCard = ({ item }: Props) => {
         </TitleArea>
         {isOpenInfo && (
           <ContentArea>
-            <Icon>
+            <Icon
+              onClick={() => {
+                openLinkInNewTab(gitUrl);
+              }}
+            >
               <p>CODE</p>
               <FaGithub />
             </Icon>
-            <Icon>
+            <Icon
+              onClick={() => {
+                openLinkInNewTab(viewUrl);
+              }}
+            >
               <p>VIEW</p>
               <FaRegEye />
             </Icon>

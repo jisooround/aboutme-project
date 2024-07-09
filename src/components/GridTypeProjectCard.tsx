@@ -1,17 +1,18 @@
 import { ProjectsListItemType } from "@/model/project";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { FaGithub } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import Gradient from "./ui/Gradient";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   item: ProjectsListItemType;
 };
 
 const GridTypeProjectCard = ({ item }: Props) => {
-  const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id } = item;
+  const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id, gitUrl, viewUrl } = item;
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const handleMouseEnter = (id: string) => {
@@ -22,21 +23,33 @@ const GridTypeProjectCard = ({ item }: Props) => {
     setHoveredId(null);
   };
 
+  const openLinkInNewTab = (path: string) => {
+    window.open(path, "_blank");
+  };
+
   return (
     <>
       <CardStyle onMouseEnter={() => handleMouseEnter(id)} onMouseLeave={handleMouseLeave}>
         <ImageWrap $isHovered={hoveredId === id}>
-          {hoveredId === id && <Gradient transition={true} />}
+          {hoveredId === id && <Gradient transition={hoveredId === id} />}
           <img src={imageUrl} alt="project-image" />
         </ImageWrap>
         {hoveredId === id && (
           <ContentArea>
             <TitleWrap>{title}</TitleWrap>
             <IconWrap>
-              <Icon>
+              <Icon
+                onClick={() => {
+                  openLinkInNewTab(gitUrl);
+                }}
+              >
                 <FaGithub />
               </Icon>
-              <Icon>
+              <Icon
+                onClick={() => {
+                  openLinkInNewTab(viewUrl);
+                }}
+              >
                 <FaRegEye />
               </Icon>
             </IconWrap>
@@ -102,7 +115,7 @@ const IconWrap = styled.div`
   gap: 0.5rem;
 `;
 
-const Icon = styled.div`
+const Icon = styled.button`
   width: 40px;
   height: 30px;
   font-size: 14px;

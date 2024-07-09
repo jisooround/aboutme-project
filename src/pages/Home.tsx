@@ -27,6 +27,7 @@ const Home = (props: Props) => {
       const projectList = await getProjectList();
       setData(projectList);
       setLoading(false);
+      console.log(projectList);
     };
 
     fetchData();
