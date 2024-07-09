@@ -24,8 +24,8 @@ const GridTypeProjectCard = ({ item }: Props) => {
 
   return (
     <>
-      <CardStyle onMouseEnter={() => handleMouseEnter(id)} onMouseLeave={handleMouseLeave} $isHovered={hoveredId === id}>
-        <ImageWrap>
+      <CardStyle onMouseEnter={() => handleMouseEnter(id)} onMouseLeave={handleMouseLeave}>
+        <ImageWrap $isHovered={hoveredId === id}>
           {hoveredId === id && <Gradient transition={true} />}
           <img src={imageUrl} alt="project-image" />
         </ImageWrap>
@@ -47,7 +47,7 @@ const GridTypeProjectCard = ({ item }: Props) => {
   );
 };
 
-const CardStyle = styled.div<{ $isHovered: boolean }>`
+const CardStyle = styled.div`
   width: 100%;
   height: auto;
   box-sizing: border-box;
@@ -57,7 +57,7 @@ const CardStyle = styled.div<{ $isHovered: boolean }>`
   position: relative;
 `;
 
-const ImageWrap = styled.div`
+const ImageWrap = styled.div<{ $isHovered: boolean }>`
   width: 100%;
   aspect-ratio: 4 / 2.5;
   display: flex;
@@ -70,6 +70,7 @@ const ImageWrap = styled.div`
     border: 1px solid var(--color-black90);
   }
   img {
+    filter: ${(props) => (props.$isHovered ? "none" : "grayscale(100%)")};
     width: 100%;
     height: 100%;
     object-fit: cover;
