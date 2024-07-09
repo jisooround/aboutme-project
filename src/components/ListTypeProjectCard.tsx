@@ -9,7 +9,7 @@ type Props = {
   item: ProjectsListItemType;
 };
 
-const ProjectCard = ({ item }: Props) => {
+const ListTypeProjectCard = ({ item }: Props) => {
   const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id } = item;
   const [isOpenInfo, setIsOpenInfo] = useState<boolean>(false);
 
@@ -121,4 +121,4 @@ const Icon = styled.div`
     transition: all 0.2s ease;
   }
 `;
-export default ProjectCard;
+export default ListTypeProjectCard;
