@@ -1,123 +1,166 @@
-import Intro from "@/components/VideoBG";
-import LoadingUi from "@/components/ui/LoadingUi";
-import { ProjectsListItemType } from "@/model/project";
-import { getProjectList } from "@/service/projects";
-import { memo, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ProjectCard from "@/components/ProjectCard";
-import { motion, useScroll, useTransform } from "framer-motion";
 
-type Props = {};
-
-const Test = (props: Props) => {
-  const [data, setData] = useState<ProjectsListItemType[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start center", "start start"],
-  });
-  const projectOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const introOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const projectList = await getProjectList();
-      setData(projectList);
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
+const Test = () => {
+  const navigate = useNavigate();
   return (
-    <HomeContainer layout>
-      <motion.div style={{ opacity: introOpacity }}>
-        <Intro />
-      </motion.div>
-      <ProjectWrap ref={ref} style={{ opacity: projectOpacity }}>
-        <ProjectTitleWrap>
-          <h2>Projects</h2>
-        </ProjectTitleWrap>
-        <ProjectListWrap>
-          {loading ? (
-            <LoadingUi />
-          ) : (
-            <CardListStyle>
-              {data.map((item) => (
-                <ProjectCard key={item.id} item={item} />
-              ))}
-            </CardListStyle>
-          )}
-        </ProjectListWrap>
-      </ProjectWrap>
-    </HomeContainer>
+    <ContainerStyle>
+      <TextWrap>
+        <div>
+          <h1>
+            안녕하세요,
+            <br />
+            만드는 것이 즐거운 개발자
+            <br />
+            우지수입니다.
+          </h1>
+          <p>
+            디자인과 개발의 {""}
+            <strong>창의적인 사고력과 논리적인 사고력을 결합</strong>하여
+            <br />
+            <strong>현실적이고 사용자 친화적인 서비스</strong>를 만들고자 합니다.
+          </p>
+        </div>
+      </TextWrap>
+      <ButtonWrap>
+        <button
+          onClick={() => {
+            navigate("/projects");
+          }}
+        >
+          Project 👀
+        </button>
+      </ButtonWrap>
+    </ContainerStyle>
   );
 };
 
-const HomeContainer = styled(motion.div)`
+const ContainerStyle = styled.div`
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  align-content: center;
   width: 100%;
-  position: relative;
-  display: flex;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  background-color: var(--color-black10);
-`;
-
-const ProjectWrap = styled(motion.div)`
-  width: 100%;
-  min-height: 100vh;
-  margin-top: 120vh;
-  padding-top: 100px;
+  padding: var(--padding-default);
   box-sizing: border-box;
-  background-color: var(--color-black10);
-  z-index: 1000;
-  display: flex;
-  align-content: flex-start;
-  flex-wrap: wrap;
+  height: calc(100vh - 87px);
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  @media screen and (max-width: 620px) {
+    padding: 1.5rem;
+    justify-content: center;
+  }
+  @media screen and (max-width: 580px) {
+    align-content: center;
+    margin-top: -50px;
+  }
 `;
 
-const ProjectTitleWrap = styled.div`
+const TextWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  position: relative; /* 변경된 부분 */
-  h2 {
-    color: black;
-    position: relative;
-    margin-left: 20px;
-    margin-top: 87px;
-    font-size: 100px;
-    font-weight: 100;
+  height: 100%;
+  padding-left: 60px;
+  box-sizing: border-box;
+  h1 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    font-size: 3.4375rem;
     animation: fadein 1s;
   }
+  p {
+    padding-top: 30px;
+    line-height: 1.5;
+    font-size: 18px;
+    animation: fadein 4s;
+  }
+  strong {
+    font-weight: 700;
+    color: var(--color-skyblue);
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    h1 {
+      font-size: 46px;
+      &:lang(ko) {
+        word-break: keep-all;
+      }
+    }
+    p {
+      &:lang(ko) {
+        word-break: keep-all;
+      }
+    }
+  }
+  @media screen and (max-width: 580px) {
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    justify-content: center;
+    h1 {
+      text-align: center;
+      font-size: 32px;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+      padding-top: 10px;
+    }
+  }
 `;
 
-const ProjectListWrap = styled.div`
-  width: 100%;
-`;
-
-const CardListStyle = styled.div`
+const ButtonWrap = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  margin: 87px auto 0;
-  width: 100%;
-  justify-items: center;
-  position: relative;
-  a {
-    background-color: var(--color-skyblue);
-    padding: 10px 20px;
-    color: var(--color-white);
-    font-weight: 500;
-    border-radius: 20px;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    top: -60px;
-    right: 0;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 60px;
+  /* TODO: 버튼 호버 효과 */
+  button {
+    margin-top: -20px;
+    width: 100%;
+    min-width: 140px;
+    height: 60px;
+    border-radius: 50px;
+    border: 1px solid var(--color-black90);
+    font-size: 1.2rem;
   }
-  a:hover {
-    box-shadow: 3px 2px 8px var(--color-black30);
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    padding-right: 0;
+    height: auto;
+    button {
+      margin-top: 20px;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 410px) {
+    button {
+      margin-top: 40px;
+    }
   }
 `;
+
 export default Test;
