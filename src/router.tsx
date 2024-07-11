@@ -23,30 +23,30 @@ export const routerData: RouterBase[] = [
     label: "home",
     element: <Home />,
   },
-  {
-    id: 1,
-    path: "/aboutme",
-    label: "aboutme",
-    element: <AboutMe />,
-  },
-  {
-    id: 2,
-    path: "/projects",
-    label: "projects",
-    element: <Projects />,
-  },
-  {
-    id: 3,
-    path: "/contact",
-    label: "contact",
-    element: <Contact />,
-  },
-  {
-    id: 4,
-    path: "/test",
-    label: "test",
-    element: <Test />,
-  },
+  // {
+  //   id: 1,
+  //   path: "/aboutme",
+  //   label: "aboutme",
+  //   element: <AboutMe />,
+  // },
+  // {
+  //   id: 2,
+  //   path: "/projects",
+  //   label: "projects",
+  //   element: <Projects />,
+  // },
+  // {
+  //   id: 3,
+  //   path: "/contact",
+  //   label: "contact",
+  //   element: <Contact />,
+  // },
+  // {
+  //   id: 4,
+  //   path: "/test",
+  //   label: "test",
+  //   element: <Test />,
+  // },
 ];
 
 export const routers: RemixRouter = createBrowserRouter(
