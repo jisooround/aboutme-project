@@ -32,9 +32,10 @@ const Home = (props: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       const projectList = await getProjectList();
-      setData(projectList);
+      const sortedData = projectList.sort((a: ProjectsListItemType, b: ProjectsListItemType) => a.order - b.order);
+      setData(sortedData);
       setLoading(false);
-      console.log(projectList);
+      console.log(sortedData);
       // 그리드 뷰에서 사용할 이미지 URL 추출
       const imageUrls = projectList.map((project: ProjectsListItemType) => project.imageUrl);
       preloadImages(imageUrls);
@@ -45,9 +46,9 @@ const Home = (props: Props) => {
 
   return (
     <HomeContainer>
-      <motion.div style={{ opacity: introOpacity }}>
+      <IntroWrap style={{ opacity: introOpacity }}>
         <Intro />
-      </motion.div>
+      </IntroWrap>
       <ProjectWrap ref={ref} style={{ opacity: projectOpacity }}>
         <ProjectTitleWrap>
           <h2>Projects</h2>
@@ -96,6 +97,8 @@ const HomeContainer = styled(motion.div)`
   flex-wrap: wrap;
   background-color: var(--color-black10);
 `;
+
+const IntroWrap = styled(motion.div)``;
 
 const ProjectWrap = styled(motion.div)`
   width: 100%;

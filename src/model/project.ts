@@ -10,6 +10,7 @@ export type ProjectsListItemType = {
   gitUrl: string;
   blogUrl: string;
   viewUrl: string;
+  order: number;
 };
 
 export type ProjectDetailType = ProjectsListItemType & {
