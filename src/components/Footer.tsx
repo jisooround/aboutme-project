@@ -10,7 +10,7 @@ const Footer = (props: Props) => {
   const footerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: footerRef,
-    offset: ["center end", "end end"],
+    offset: ["start end", "end end"],
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);

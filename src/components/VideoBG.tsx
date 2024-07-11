@@ -92,6 +92,16 @@ const IntroWrap = styled.div`
       text-align: right;
     }
   }
+  @media screen and (max-width: 960px) {
+    div {
+      font-size: 78px;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    div {
+      font-size: 50px;
+    }
+  }
 `;
 
 const StickyContainer = styled(motion.div)`
