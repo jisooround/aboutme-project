@@ -1,4 +1,3 @@
-import { viewer } from "./../../sanity-studio/node_modules/sanity/src/core/store/_legacy/grants/debug/exampleGrants";
 export type ProjectsListItemType = {
   dateEnd: string;
   dateStart: string;
@@ -24,14 +23,3 @@ export type ProjectDescType = {
   id: string;
   content: string;
 };
-
-// export type ImageUrlType = {
-//   options: ImageUrlOptionsType;
-// };
-
-// type ImageUrlOptionsType = {
-//   baseUrl: string;
-//   dataset: string;
-//   projectId: string;
-//   source: string;
-// };
