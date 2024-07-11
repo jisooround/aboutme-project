@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import Gradient from "./ui/Gradient";
 import { useNavigate } from "react-router-dom";
+import { openLinkInNewTab } from "@/utills/openLinkInNewTap";
 
 type Props = {
   item: ProjectsListItemType;
@@ -21,10 +22,6 @@ const GridTypeProjectCard = ({ item }: Props) => {
 
   const handleMouseLeave = () => {
     setHoveredId(null);
-  };
-
-  const openLinkInNewTab = (path: string) => {
-    window.open(path, "_blank");
   };
 
   return (

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { HiOutlinePlus } from "react-icons/hi2";
 import { FaGithub } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
+import { openLinkInNewTab } from "@/utills/openLinkInNewTap";
 
 type Props = {
   item: ProjectsListItemType;
@@ -12,10 +13,6 @@ type Props = {
 const ListTypeProjectCard = ({ item }: Props) => {
   const { title, dateEnd, dateStart, icon, imageUrl, team, tool, id, gitUrl, viewUrl } = item;
   const [isOpenInfo, setIsOpenInfo] = useState<boolean>(false);
-
-  const openLinkInNewTab = (path: string) => {
-    window.open(path, "_blank");
-  };
 
   return (
     <>
