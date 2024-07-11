@@ -31,7 +31,7 @@ const GridTypeProjectCard = ({ item }: Props) => {
     <>
       <CardStyle onMouseEnter={() => handleMouseEnter(id)} onMouseLeave={handleMouseLeave}>
         <ImageWrap $isHovered={hoveredId === id}>
-          {hoveredId === id && <Gradient transition={hoveredId === id} />}
+          {hoveredId === id && <Gradient isShow={hoveredId === id} />}
           <img src={imageUrl} alt="project-image" />
         </ImageWrap>
         {hoveredId === id && (

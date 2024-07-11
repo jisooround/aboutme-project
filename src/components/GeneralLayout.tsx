@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import ContactPopup from "./ContactPopup";
+import Footer from "./Footer";
 
 type Props = {
   children: React.ReactNode;
@@ -15,6 +16,7 @@ const GeneralLayout = ({ children }: Props) => {
       {contactFlag && <ContactPopup setContactFlag={setContactFlag} />}
       <Navbar setContactFlag={setContactFlag} />
       <GeneralBodyStyle>{children}</GeneralBodyStyle>
+      <Footer />
     </GeneralLayoutStyle>
   );
 };

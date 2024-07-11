@@ -24,3 +24,14 @@ export type ProjectDescType = {
   id: string;
   content: string;
 };
+
+// export type ImageUrlType = {
+//   options: ImageUrlOptionsType;
+// };
+
+// type ImageUrlOptionsType = {
+//   baseUrl: string;
+//   dataset: string;
+//   projectId: string;
+//   source: string;
+// };

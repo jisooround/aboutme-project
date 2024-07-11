@@ -1,14 +1,14 @@
 import styled from "styled-components";
 interface TransitionProps {
-  transition?: boolean;
+  isShow?: boolean;
 }
 
-const Gradient = ({ transition }: TransitionProps) => {
-  if (!transition) return null;
-  return <GradientContainer transition={transition ?? false}></GradientContainer>;
+const Gradient = ({ isShow }: TransitionProps) => {
+  if (!isShow) return null;
+  return <GradientContainer $isShow={isShow ?? false}></GradientContainer>;
 };
 
-const GradientContainer = styled.div<TransitionProps>`
+const GradientContainer = styled.div<{ $isShow: boolean }>`
   position: absolute;
   bottom: 0;
   width: 100%;

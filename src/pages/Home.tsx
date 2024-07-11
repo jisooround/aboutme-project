@@ -22,19 +22,29 @@ const Home = (props: Props) => {
   const projectOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const introOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
+  const preloadImages = (urls: string[]) => {
+    urls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const projectList = await getProjectList();
       setData(projectList);
       setLoading(false);
       console.log(projectList);
+      // 그리드 뷰에서 사용할 이미지 URL 추출
+      const imageUrls = projectList.map((project: ProjectsListItemType) => project.imageUrl);
+      preloadImages(imageUrls);
     };
 
     fetchData();
   }, []);
 
   return (
-    <HomeContainer layout>
+    <HomeContainer>
       <motion.div style={{ opacity: introOpacity }}>
         <Intro />
       </motion.div>

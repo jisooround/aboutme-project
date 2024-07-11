@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Intro = () => {
-  // const [frameSrc, setFrameSrc] = useState<string>("https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_0000.webp");
-  const [frameSrc, setFrameSrc] = useState<string>("/frames/frame_0000.webp");
+  const [frameSrc, setFrameSrc] = useState<string>("https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_0000.webp");
+  // const [frameSrc, setFrameSrc] = useState<string>("/frames/frame_0000.webp");
   const videoRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: videoRef,
@@ -19,8 +19,8 @@ const Intro = () => {
     // 스크롤 진행도에 따라 프레임 이미지를 업데이트하는 함수
     const updateAtScroll = (progress: number) => {
       const frameIndex = Math.floor(progress * totalFrames);
-      // const src = `https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_${String(frameIndex).padStart(4, "0")}.webp`;
-      const src = `/frames/frame_${String(frameIndex).padStart(4, "0")}.webp`;
+      const src = `https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_${String(frameIndex).padStart(4, "0")}.webp`;
+      // const src = `/frames/frame_${String(frameIndex).padStart(4, "0")}.webp`;
       if (frameSrc !== src) {
         setFrameSrc(src);
       }
@@ -41,7 +41,7 @@ const Intro = () => {
   }, [scrollYProgress]);
 
   return (
-    <VideoContainer layout>
+    <VideoContainer>
       <StickyContainer ref={videoRef}>
         <IntroWrap>
           <motion.div style={{ x: rightTransform }}>Front-end Developer</motion.div>
