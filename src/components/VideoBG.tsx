@@ -15,6 +15,16 @@ const Intro = () => {
   const rightTransform = useTransform(scrollYProgress, [0, 1], [-1000, 1000]);
   const leftTransform = useTransform(scrollYProgress, [0, 1], [1000, -1000]);
 
+  const preloadImages = (frameCount: number) => {
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = `https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_${String(i).padStart(4, "0")}.webp`;
+    }
+  };
+
+  useEffect(() => {
+    preloadImages(totalFrames);
+  }, []);
   useEffect(() => {
     // 스크롤 진행도에 따라 프레임 이미지를 업데이트하는 함수
     const updateAtScroll = (progress: number) => {
@@ -59,6 +69,7 @@ const VideoContainer = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
+  scroll-snap-align: start;
 `;
 
 const IntroWrap = styled.div`
