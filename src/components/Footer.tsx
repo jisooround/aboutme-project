@@ -13,7 +13,7 @@ const Footer = (props: Props) => {
     offset: ["center end", "end end"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [-200, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 1]);
   const currentYear = new Date().getFullYear();
 
