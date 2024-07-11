@@ -9,12 +9,9 @@ type Props = {
 };
 
 const GeneralLayout = ({ children }: Props) => {
-  const [contactFlag, setContactFlag] = useState<boolean>(false);
-
   return (
     <GeneralLayoutStyle>
-      {contactFlag && <ContactPopup setContactFlag={setContactFlag} />}
-      <Navbar setContactFlag={setContactFlag} />
+      <Navbar />
       <GeneralBodyStyle>{children}</GeneralBodyStyle>
       <Footer />
     </GeneralLayoutStyle>

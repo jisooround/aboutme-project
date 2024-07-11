@@ -123,6 +123,9 @@ const ProjectTitleWrap = styled.div`
     margin-top: 87px;
     font-size: 100px;
     font-weight: 100;
+    @media screen and (max-width: 960px) {
+      font-size: 50px;
+    }
   }
 `;
 

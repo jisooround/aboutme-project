@@ -55,6 +55,10 @@ const FooterContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   background-color: var(--color-black90);
+  @media screen and (max-width: 960px) {
+    height: auto;
+    transition: all.3s;
+  }
 `;
 
 const MainWrap = styled.div`
@@ -97,14 +101,15 @@ const MainWrap = styled.div`
   @media screen and (max-width: 960px) {
     width: 100%;
     height: auto;
-    padding-left: 0;
+    padding: 30px;
     h1 {
-      font-size: 46px;
+      font-size: 18px;
       &:lang(ko) {
         word-break: keep-all;
       }
     }
     p {
+      padding-top: 16px;
       &:lang(ko) {
         word-break: keep-all;
       }
@@ -113,14 +118,11 @@ const MainWrap = styled.div`
   @media screen and (max-width: 580px) {
     width: 100%;
     height: auto;
-    padding-left: 0;
-    justify-content: center;
+    padding: 20px;
     h1 {
-      text-align: center;
-      font-size: 32px;
+      font-size: 18px;
     }
     p {
-      text-align: center;
       font-size: 16px;
       padding-top: 10px;
     }
@@ -138,6 +140,12 @@ const SubWrap = styled.div`
     cursor: pointer;
     z-index: 1000;
     font-weight: 700;
+  }
+  @media screen and (max-width: 960px) {
+    padding: 30px;
+  }
+  @media screen and (max-width: 580px) {
+    padding: 20px;
   }
 `;
 
