@@ -34,7 +34,7 @@ const Home = (props: Props) => {
       const sortedData = projectList.sort((a: ProjectsListItemType, b: ProjectsListItemType) => a.order - b.order);
       setData(sortedData);
       setLoading(false);
-      console.log(sortedData);
+      // console.log(sortedData);
       // 그리드 뷰에서 사용할 이미지 URL 추출
       const imageUrls = projectList.map((project: ProjectsListItemType) => project.imageUrl);
       preloadImages(imageUrls);

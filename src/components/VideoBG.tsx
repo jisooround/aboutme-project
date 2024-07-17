@@ -24,7 +24,7 @@ const Intro = () => {
 
   useEffect(() => {
     preloadImages(totalFrames);
-    console.log("window.innerWidth", window.innerWidth);
+    // console.log("window.innerWidth", window.innerWidth);
   }, []);
   useEffect(() => {
     // 스크롤 진행도에 따라 프레임 이미지를 업데이트하는 함수
