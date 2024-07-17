@@ -157,6 +157,13 @@ const CardGridStyle = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin: 1rem;
+  @media screen and (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 960px) {
+    grid-template-columns: repeat(1, 1fr);
+    padding-bottom: 3rem;
+  }
 `;
 
 const CardListStyle = styled.div`
