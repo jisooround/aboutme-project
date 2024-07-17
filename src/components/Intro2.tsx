@@ -6,14 +6,38 @@ const Intro = () => {
   const [frameSrc, setFrameSrc] = useState<string>("https://jisooround.s3.ap-northeast-2.amazonaws.com/aboutme/frame_0000.webp");
   // const [frameSrc, setFrameSrc] = useState<string>("/frames/frame_0000.webp");
   const videoRef = useRef<HTMLDivElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [leftWidth, setLeftWidth] = useState(0);
+  const [rightWidth, setRightWidth] = useState(0);
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (leftRef.current && rightRef.current) {
+        setWindowWidth(window.innerWidth);
+        setLeftWidth(leftRef.current.offsetWidth);
+        setRightWidth(rightRef.current.offsetWidth);
+      }
+    };
+
+    updateDimensions(); // Update dimensions initially
+    window.addEventListener("resize", updateDimensions); // Update dimensions on window resize
+
+    return () => {
+      window.removeEventListener("resize", updateDimensions); // Cleanup event listener
+    };
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: videoRef,
     offset: ["start end", "end start"],
   });
 
   const totalFrames = 100;
-  const rightTransform = useTransform(scrollYProgress, [0, 1], [-1000, 1000]);
-  const leftTransform = useTransform(scrollYProgress, [0, 1], [1000, -1000]);
+  const rightTransform = useTransform(scrollYProgress, [0, 1], [windowWidth, -rightWidth]);
+  const leftTransform = useTransform(scrollYProgress, [0, 1], [-leftWidth, windowWidth]);
 
   const preloadImages = (frameCount: number) => {
     for (let i = 0; i < frameCount; i++) {
@@ -24,7 +48,6 @@ const Intro = () => {
 
   useEffect(() => {
     preloadImages(totalFrames);
-    console.log("window.innerWidth", window.innerWidth);
   }, []);
   useEffect(() => {
     // 스크롤 진행도에 따라 프레임 이미지를 업데이트하는 함수
@@ -55,8 +78,28 @@ const Intro = () => {
     <VideoContainer>
       <StickyContainer ref={videoRef}>
         <IntroWrap>
-          <motion.div style={{ x: rightTransform }}>Front-end Developer</motion.div>
-          <motion.div style={{ x: leftTransform }}>for User Experience</motion.div>
+          <motion.div
+            ref={leftRef}
+            style={{
+              x: leftTransform,
+              // position: "absolute",
+              // top: "87px",
+              // left: 0,
+            }}
+          >
+            Front-end Developer
+          </motion.div>
+          <motion.div
+            ref={rightRef}
+            style={{
+              x: rightTransform,
+              // position: "absolute",
+              // bottom: 0,
+              // right: 0,
+            }}
+          >
+            for User Experience
+          </motion.div>
         </IntroWrap>
         {frameSrc && <img src={frameSrc} alt="frame" width="100%" />}
       </StickyContainer>
@@ -65,40 +108,40 @@ const Intro = () => {
 };
 
 const VideoContainer = styled(motion.div)`
-  width: 100%;
+  max-width: 100vw;
+  min-width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  scroll-snap-align: start;
+  overflow: auto;
 `;
 
 const IntroWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: calc(100vh - 87px);
+  max-width: 100vw;
+  min-width: 100vw;
+  height: 100%;
+  /* margin-top: 87px; */
   mix-blend-mode: difference;
   position: absolute;
-  padding: 1em;
-  box-sizing: border-box;
+  /* background-color: aqua; */
+  border: 10px solid red;
+  border-style: inset;
   div {
     width: 100%;
-    bottom: 0;
+    /* display: flex;
+    justify-content: flex-start; */
     font-size: 100px;
     font-weight: 700;
     color: var(--color-white);
     &:nth-child(2) {
-      text-align: right;
+      /* justify-content: flex-end; */
     }
-  }
-  @media screen and (max-width: 1680px) {
-    margin-top: 87px;
   }
   @media screen and (max-width: 960px) {
     div {
       font-size: 78px;
+      margin: 0;
     }
   }
   @media screen and (max-width: 580px) {

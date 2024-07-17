@@ -24,5 +24,6 @@ const GeneralLayoutStyle = styled.div`
 
 const GeneralBodyStyle = styled.div`
   padding-top: 87px;
+  box-sizing: border-box;
 `;
 export default GeneralLayout;

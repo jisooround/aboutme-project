@@ -1,5 +1,3 @@
-import Intro from "@/components/VideoBG";
-import LoadingUi from "@/components/ui/LoadingUi";
 import { ProjectsListItemType } from "@/model/project";
 import { getProjectList } from "@/service/projects";
 import { memo, useEffect, useRef, useState } from "react";
@@ -7,6 +5,7 @@ import styled from "styled-components";
 import ListTypeProjectCard from "@/components/ListTypeProjectCard";
 import { motion, useScroll, useTransform } from "framer-motion";
 import GridTypeProjectCard from "@/components/GridTypeProjectCard";
+import VideoBG from "@/components/VideoBG";
 
 type Props = {};
 
@@ -47,7 +46,7 @@ const Home = (props: Props) => {
   return (
     <HomeContainer>
       <IntroWrap style={{ opacity: introOpacity }}>
-        <Intro />
+        <VideoBG />
       </IntroWrap>
       <ProjectWrap ref={ref} style={{ opacity: projectOpacity }}>
         <ProjectTitleWrap>
