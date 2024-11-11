@@ -1,5 +1,7 @@
 # 자기소개 페이지
 
+[바로가기](https://jisooround.netlify.app/) https://jisooround.netlify.app/
+
 ## 실행
 
 ```
